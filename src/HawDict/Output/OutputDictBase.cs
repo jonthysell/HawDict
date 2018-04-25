@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace HawDict
 {
@@ -49,13 +50,8 @@ namespace HawDict
         {
             get
             {
-                DateTime buildTime = CreationDateTime;
-                int major = 0;
-                int minor = 9;
-                int build = (major >= 1 && minor % 2 == 1) ? (1000 * (buildTime.Year % 100)) + buildTime.DayOfYear : 0;
-                int revision = (major >= 1 && minor % 2 == 1) ? (100 * buildTime.Hour) + buildTime.Minute : 0;
-
-                return string.Format("{0}.{1}.{2:0000}.{3:0000}", major, minor, build, revision);
+                AssemblyName name = Assembly.GetEntryAssembly().GetName();
+                return name.Version.ToString();
             }
         }
 
