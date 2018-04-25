@@ -1,6 +1,6 @@
 # HawDict #
 
-The purpose of HawDict is to produce digital versions of popular Hawaiian dictionaries in a variety of digital dictionary formats.
+HawDict creates offline versions of popular Hawaiian dictionaries in a variety of digital dictionary formats.
 
 By default all files produced by HawDict will use the proper Unicode characters for the [ʻokina](http://www.olelo.hawaii.edu/olelo/puana/okina.php) and [kahakōs](http://www.olelo.hawaii.edu/olelo/puana/kahako.php): `ʻ ā ē ī ō ū Ā Ē Ī Ō Ū`. However, for (typically older) dictionary formats where these characters cannot be used, HawDict will substitute ASCII instead: `' a e i o u A E I O U`.
 
@@ -26,7 +26,7 @@ Each folder contains the results from a particular source dictionary. The files 
 
  * `*.clean.txt`: a simple tab-delimited text file of terms and definitions
  * `*.dict.xdxf`: an XDXF structured XML file
-  * `*.StarDict.ifo, *.StarDict.idx, *.StarDict.dict`: the StarDict formatted binary files
+  * `*.StarDict.*`: the StarDict formatted binary files
  * `*.html.tmp`: a temporary file with the raw source data (helps reduce bandwidth usage)
 
 ### PukuiElbert ###
