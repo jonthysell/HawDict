@@ -4,30 +4,11 @@ HawDict creates offline versions of popular Hawaiian dictionaries in a variety o
 
 By default all files produced by HawDict will use the proper Unicode characters for the [ʻokina](http://www.olelo.hawaii.edu/olelo/puana/okina.php) and [kahakōs](http://www.olelo.hawaii.edu/olelo/puana/kahako.php): `ʻ ā ē ī ō ū Ā Ē Ī Ō Ū`. However, for (typically older) dictionary formats where these characters cannot be used, HawDict will substitute ASCII instead: `' a e i o u A E I O U`.
 
-## Building HawDict ##
+For help building/running HawDict and/or using the created dictionaries, please see the [HawDict Wiki](https://github.com/jonthysell/HawDict/wiki).
 
-HawDict can be built in Visual Studio 2017.
+## Source Dictionaries ##
 
-The source for HawDict is provided as a Visual Studio 2017 solution in the `src` folder. Simply open HawDict.sln and build.
-
-Note: Be sure to enable NuGet Packages Restore to get all of HawDict's dependencies.
-
-## Running HawDict ##
-
-HawDict requires .NET 4.5 or later to run.
-
-Run HawDict.exe to produce a set of folders with Hawaiian dictionaries in different formats. The first time you run this app it will take some time as each source dictionary has to be downloaded.
-
-You may optionally provide HawDict.exe with an alternate root path to output the folders.
-
-## The Dictionaries ##
-
-Each folder contains the results from a particular source dictionary. The files will be named according to the direction of the translation (Hawaiian to English or English to Hawaiian) and can be of the following types:
-
- * `*.clean.txt`: a simple tab-delimited text file of terms and definitions
- * `*.dict.xdxf`: an XDXF structured XML file
-  * `*.StarDict.*`: the StarDict formatted binary files
- * `*.html.tmp`: a temporary file with the raw source data (helps reduce bandwidth usage)
+HawDict creates offline versions of the following source dictionaries:
 
 ### PukuiElbert ###
 
