@@ -77,6 +77,7 @@ namespace HawDict
                 .Replace("</span> renal vein", "renal vein</span>")
                 .Replace("<p> l&#257;", "\n</p>\n <p align=\"justify\"><span class=\"head\">l&#257;</span>")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"justify\">laws.", " laws.")
+                .Replace("<i.handle", " <i>handle").Replace("period.>", " period.").Replace("uila.<?p>", "uila.</p>")
                 .Replace("<sub>0</sub>", "&#x2080;").Replace("<SUB>1</SUB>", "&#x2081;").Replace("<SUB>2</SUB>", "&#x2082;").Replace("<sub>1</sub>", "&#x2081;").Replace("<sub>2</sub>", "&#x2082;")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("</p>\n <p align=\"justify\"><span class=\"head\">&#256;.</span>", " &#256;.")

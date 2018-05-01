@@ -65,6 +65,7 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">N&#257;n&#257;</span> 3", "<span>N&#257;n&#257;.</span> 3").Replace("N&#257;n&#257; 2", "N&#257;n&#257;. 2").Replace("N&#257;n&#257; 1", "N&#257;n&#257;. 1")
                 .Replace("..", ".").Replace(".</span>.", ".</span>").Replace(".</em>.", ".</em>")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
+                .Replace("T.44>", "")
                 .Replace("h3", "span");
         }
 
