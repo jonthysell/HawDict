@@ -9,9 +9,6 @@ using System.Reflection;
 
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("HawDict")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("0.9.0.0")]
-[assembly: AssemblyFileVersion("0.9.0.0")]
+[assembly: AssemblyVersion("0.9.00000.0000")]
+[assembly: AssemblyFileVersion("0.9.00000.0000")]
