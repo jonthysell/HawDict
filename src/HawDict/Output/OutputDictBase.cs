@@ -32,6 +32,8 @@ namespace HawDict
 {
     public abstract class OutputDictBase
     {
+        public string ID { get; private set; }
+
         public string FormatType { get; private set; }
 
         public TranslationType TranslationType { get; private set; }
@@ -61,8 +63,9 @@ namespace HawDict
 
         public List<OutputAbbreviation> Abbreviations { get; private set; } = new List<OutputAbbreviation>();
 
-        public OutputDictBase(string formatType, TranslationType translationType)
+        public OutputDictBase(string id, string formatType, TranslationType translationType)
         {
+            ID = !string.IsNullOrWhiteSpace(id) ? id : throw new ArgumentNullException(nameof(id));
             FormatType = !string.IsNullOrWhiteSpace(formatType) ? formatType : throw new ArgumentNullException(nameof(formatType));
             TranslationType = translationType;
         }

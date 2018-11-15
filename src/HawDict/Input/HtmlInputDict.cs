@@ -45,7 +45,7 @@ namespace HawDict
 
         protected override void GetRawDataFromSource()
         {
-            string htmlFile = Path.Combine(DictDir, string.Format("{0}.html.tmp", TranslationType.ToString()));
+            string htmlFile = Path.Combine(DictDir, string.Format("{0}.{1}.html.tmp", ID, TranslationType.ToString()));
 
             string html = "";
 

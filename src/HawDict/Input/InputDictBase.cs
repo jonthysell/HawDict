@@ -78,7 +78,7 @@ namespace HawDict
 
             Log("Save start.");
 
-            string cleanFile = Path.Combine(DictDir, string.Format("{0}.clean.txt", TranslationType.ToString()));
+            string cleanFile = Path.Combine(DictDir, string.Format("{0}.{1}.clean.txt", ID, TranslationType.ToString()));
             SaveCleanFile(cleanFile);
 
             SaveOutputDict<XdxfDictionary>();
@@ -151,7 +151,7 @@ namespace HawDict
 
             if (typeof(T) == typeof(XdxfDictionary))
             {
-                dict = new XdxfDictionary(TranslationType)
+                dict = new XdxfDictionary(ID, TranslationType)
                 {
                     Title = ShortTitle,
                     FullTitle = LongTitle,
@@ -161,7 +161,7 @@ namespace HawDict
             }
             else if (typeof(T) == typeof(StarDictDictionary))
             {
-                dict = new StarDictDictionary(TranslationType)
+                dict = new StarDictDictionary(ID, TranslationType)
                 {
                     Title = LongTitle,
                     Description = Description,

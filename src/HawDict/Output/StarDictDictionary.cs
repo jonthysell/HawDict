@@ -36,7 +36,7 @@ namespace HawDict
     {
         private static StarDictArticleComparer _keyComparer = new StarDictArticleComparer();
 
-        public StarDictDictionary(TranslationType translationType) : base("StarDict", translationType) { }
+        public StarDictDictionary(string id, TranslationType translationType) : base(id, "StarDict", translationType) { }
 
         public override void Save(string dictDir)
         {
@@ -54,9 +54,9 @@ namespace HawDict
 
         private void SaveDataFiles(string dictDir, out long idxFileSize, out int synWordCount)
         {
-            string dictFile = Path.Combine(dictDir, string.Format("{0}.StarDict.dict", TranslationType.ToString()));
-            string idxFile = Path.Combine(dictDir, string.Format("{0}.StarDict.idx", TranslationType.ToString()));
-            string synFile = Path.Combine(dictDir, string.Format("{0}.StarDict.syn", TranslationType.ToString()));
+            string dictFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.dict", ID, TranslationType.ToString()));
+            string idxFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.idx", ID, TranslationType.ToString()));
+            string synFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.syn", ID, TranslationType.ToString()));
 
             BinaryWriter dictWriter = new BinaryWriter(new FileStream(dictFile, FileMode.Create), Encoding.UTF8);
             BinaryWriter idxWriter = new BinaryWriter(new FileStream(idxFile, FileMode.Create), Encoding.UTF8);
@@ -121,7 +121,7 @@ namespace HawDict
 
         private void SaveIfoFile(string dictDir, long idxFileSize, int synWordCount)
         {
-            string ifoFile = Path.Combine(dictDir, string.Format("{0}.StarDict.ifo", TranslationType.ToString()));
+            string ifoFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.ifo", ID, TranslationType.ToString()));
 
             using (BinaryWriter ifoWriter = new BinaryWriter(new FileStream(ifoFile, FileMode.Create), Encoding.UTF8))
             {

@@ -42,7 +42,7 @@ namespace HawDict
 
         #endregion
 
-        public XdxfDictionary(TranslationType translationType) : base("XDXF", translationType) { }
+        public XdxfDictionary(string id, TranslationType translationType) : base(id, "XDXF", translationType) { }
 
         public override void Save(string dictDir)
         {
@@ -51,7 +51,7 @@ namespace HawDict
                 throw new ArgumentNullException(nameof(dictDir));
             }
 
-            string xdxfFile = Path.Combine(dictDir, string.Format("{0}.dict.xdxf", TranslationType.ToString()));
+            string xdxfFile = Path.Combine(dictDir, string.Format("{0}.{1}.dict.xdxf", ID, TranslationType.ToString()));
 
             using (FileStream fs = new FileStream(xdxfFile, FileMode.Create))
             {
