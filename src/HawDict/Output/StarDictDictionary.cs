@@ -34,7 +34,7 @@ namespace HawDict
 {
     public class StarDictDictionary : OutputDictBase
     {
-        private static StarDictArticleComparer _keyComparer = new StarDictArticleComparer();
+        private static readonly StarDictArticleComparer _keyComparer = new StarDictArticleComparer();
 
         public StarDictDictionary(string id, TranslationType translationType) : base(id, "StarDict", translationType) { }
 
@@ -45,9 +45,7 @@ namespace HawDict
                 throw new ArgumentNullException(nameof(dictDir));
             }
 
-            long idxFileSize;
-            int synWordCount;
-            SaveDataFiles(dictDir, out idxFileSize, out synWordCount);
+            SaveDataFiles(dictDir, out long idxFileSize, out int synWordCount);
 
             SaveIfoFile(dictDir, idxFileSize, synWordCount);
         }

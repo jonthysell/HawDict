@@ -75,9 +75,10 @@ namespace HawDict
             {
                 if (null == _starDictKeySynonyms)
                 {
-                    _starDictKeySynonyms = new HashSet<string>();
-
-                    _starDictKeySynonyms.Add(StarDictKey);
+                    _starDictKeySynonyms = new HashSet<string>
+                    {
+                        StarDictKey
+                    };
 
                     foreach (string key in StarDictKey.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                     {
@@ -254,9 +255,10 @@ namespace HawDict
 
         private static HashSet<string> GetSynonyms(string key)
         {
-            HashSet<string> synonyms = new HashSet<string>();
-
-            synonyms.Add(key);
+            HashSet<string> synonyms = new HashSet<string>
+            {
+                key
+            };
 
             string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "");
 

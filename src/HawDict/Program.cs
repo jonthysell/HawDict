@@ -35,7 +35,7 @@ namespace HawDict
         {
             get
             {
-                return _startTime.HasValue ? _startTime.Value : (_startTime = DateTime.Now).Value;
+                return _startTime ?? (_startTime = DateTime.Now).Value;
             }
         }
         private static DateTime? _startTime = null;

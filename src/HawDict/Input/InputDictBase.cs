@@ -52,7 +52,7 @@ namespace HawDict
 
         public string SrcUrl { get; protected set; } = null;
 
-        private LogLine _logLine;
+        private readonly LogLine _logLine;
 
         protected List<string[]> _rawData = new List<string[]>();
 
