@@ -26,10 +26,18 @@ A compilation of Hawaiian words that have been created, collected, and approved 
 
 Copyright (c) 2003 ʻAha Pūnana Leo and Hale Kuamoʻo, College of Hawaiian Language, University of Hawaiʻi at Hilo
 
+### PlaceNames ###
+
+*Place Names of Hawaii: Revised and Expanded Edition* by Mary Kawena Pūkuʻi, Samuel H. Elbert, Esther T. Moʻokini. ISBN 978-0824805241
+
+The standard glossary of Hawaiian place names.
+
+Copyright (c) 1974 The University Press of Hawaii
+
 ## Errata ##
 
 HawDict is open-source under the MIT license.
 
 All source data (terms, definitions, etc) are copyright their respective copyright owners.
 
-HawDict Copyright (c) 2018 Jon Thysell
+HawDict Copyright (c) 2018-2019 Jon Thysell

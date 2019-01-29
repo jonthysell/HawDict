@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2018 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2018, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -223,6 +223,8 @@ namespace HawDict
             value = value.Replace(string.Format(" {0})", abbreviation), string.Format(" <abbr>{0}</abbr>)", abbreviation));
             value = value.Replace(string.Format("({0})", abbreviation), string.Format("(<abbr>{0}</abbr>)", abbreviation));
 
+            value = value.Replace(string.Format("{0}.", abbreviation), string.Format("<abbr>{0}</abbr>.", abbreviation));
+
             value = value.Replace(string.Format("{0};", abbreviation), string.Format("<abbr>{0}</abbr>;", abbreviation));
 
             value = value.Replace(string.Format("{0},", abbreviation), string.Format("<abbr>{0}</abbr>,", abbreviation));
@@ -260,7 +262,7 @@ namespace HawDict
                 key
             };
 
-            string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "");
+            string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "").Replace("*", "");
 
             synonyms.Add(s);
             synonyms.Add(StringUtils.ReplaceOkina(s));

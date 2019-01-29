@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2018 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2018, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,6 +54,7 @@ namespace HawDict
                     new PukuiElbertInputDict(TranslationType.EngToHaw, PrintLine),
                     new MamakaKaiaoInputDict(TranslationType.HawToEng, PrintLine),
                     new MamakaKaiaoInputDict(TranslationType.EngToHaw, PrintLine),
+                    new PlaceNamesInputDict(PrintLine),
                 };
 
                 foreach (InputDictBase dictionary in dictionaries)

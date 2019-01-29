@@ -5,7 +5,7 @@ using System.Reflection;
 
 [assembly: AssemblyTitle("HawDict")]
 [assembly: AssemblyDescription("Creates offline Hawaiian dictionaries.")]
-[assembly: AssemblyCopyright("Copyright © 2018 Jon Thysell")]
+[assembly: AssemblyCopyright("Copyright © 2018-2019 Jon Thysell")]
 
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("HawDict")]
