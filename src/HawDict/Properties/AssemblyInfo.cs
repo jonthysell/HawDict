@@ -10,5 +10,5 @@ using System.Reflection;
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("HawDict")]
 
-[assembly: AssemblyVersion("0.9.00000.0000")]
-[assembly: AssemblyFileVersion("0.9.00000.0000")]
+[assembly: AssemblyVersion("0.9.19091.1851")]
+[assembly: AssemblyFileVersion("0.9.19091.1851")]
