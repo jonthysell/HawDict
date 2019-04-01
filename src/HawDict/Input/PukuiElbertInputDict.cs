@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2018 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2018, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,10 @@ namespace HawDict
                 .Replace("..", ".").Replace(".</span>.", ".</span>").Replace(".</em>.", ".</em>")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("T.44>", "")
-                .Replace("h3", "span");
+                .Replace("h3", "span")
+                // Typo fixes:
+                .Replace("nuts containing while,", "nuts containing white,")
+                ;
         }
 
         protected override bool IsEntryNode(HtmlNode node)
