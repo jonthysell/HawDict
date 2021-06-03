@@ -12,6 +12,31 @@ HawDict was written in C# and should run anywhere that supports [.NET 5.0](https
 
 For help building/running HawDict and/or using the created dictionaries, please see the [HawDict Wiki](https://github.com/jonthysell/HawDict/wiki).
 
+## Installation ##
+
+### Windows ###
+
+The Windows release is a self-contained x86/x64 binary which run on Windows 7 SP1+, 8.1, and 10.
+
+1. Download the latest Windows zip file (HawDict.Win64.zip *or* HawDict.Win32.zip) from https://github.com/jonthysell/HawDict/releases/latest
+2. Extract the zip file
+
+**Note:** If you're unsure which version to download, try HawDict.Win64.zip first. Most modern PCs are 64-Bit.
+
+### MacOS ###
+
+The MacOS release is a self-contained x64 binary and runs on OSX >= 10.13.
+
+1. Download the latest MacOS tar.gz file (HawDict.MacOS.tar.gz) from https://github.com/jonthysell/HawDict/releases/latest
+2. Extract the tar.gz file
+
+### Linux ###
+
+The Linux release is a self-contained x64 binary and runs on many Linux distributions.
+
+1. Download the latest Linux tar.gz file (HawDict.Linux.tar.gz) from https://github.com/jonthysell/HawDict/releases/latest
+2. Extract the tar.gz file
+
 ## Source Dictionaries ##
 
 HawDict creates offline versions of the following source dictionaries:
