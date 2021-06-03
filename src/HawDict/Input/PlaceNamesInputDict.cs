@@ -1,28 +1,5 @@
-﻿// 
-// PlaceNamesInputDict.cs
-//  
-// Author:
-//       Jon Thysell <thysell@gmail.com>
-// 
-// Copyright (c) 2019 Jon Thysell <http://jonthysell.com>
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+﻿// Copyright (c) Jon Thysell <http://jonthysell.com>
+// Licensed under the MIT License.
 
 using System;
 using System.Text.RegularExpressions;
@@ -48,9 +25,13 @@ namespace HawDict
 
         protected override string CleanSourceHtml(string s)
         {
-            s = Regex.Replace(s, "<table style=\"margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<h2>.*<table style=\"margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<h1>AaAaAa</h1>", "<table style=\"margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<h1>AaAaAa</h1>", RegexOptions.Singleline);
+            s = Regex.Replace(s, "<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<br><br><br><br><br>\n<div align=\"right\">GLOSSARY</div>.*<h1>AaAaAa</h1>", "<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<h1>AaAaAa</h1>", RegexOptions.Singleline);
 
-            s = s.Replace("<?>", ";");
+
+            s = s.Replace("<span></p>Ke-au-kaha</span>", "<span>Ke-au-kaha</span>")
+                .Replace("before the time of  </td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>Kiha-a-Pi&#699;ilani, and has been in continual use since then. <i>Lit.,</i> big Ke-awa.</p>", "before the time of Kiha-a-Pi&#699;ilani, and has been in continual use since then. <i>Lit.,</i> big Ke-awa.</p>")
+                .Replace("<span></p>Ke-kaulike", "<span>Ke-kaulike")
+                .Replace("<?>", ";");
 
             return s;
         }
@@ -65,7 +46,15 @@ namespace HawDict
             string entryName = node.FirstChild.OuterHtml;
             string entryValue = node.InnerHtml.Remove(0, entryName.Length + 1);
 
-            return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+            try
+            {
+                return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+            }
+            catch (Exception)
+            {
+                Log("Unable to parse Name: \"{0}\" Value: \"{1}\"", entryName, entryValue);
+                return null;
+            }
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)

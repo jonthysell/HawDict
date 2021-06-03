@@ -1,28 +1,5 @@
-﻿// 
-// MamakaKaiaoInputDict.cs
-//  
-// Author:
-//       Jon Thysell <thysell@gmail.com>
-// 
-// Copyright (c) 2018 Jon Thysell <http://jonthysell.com>
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+﻿// Copyright (c) Jon Thysell <http://jonthysell.com>
+// Licensed under the MIT License.
 
 using System;
 using System.Text.RegularExpressions;
@@ -81,6 +58,13 @@ namespace HawDict
                 .Replace("<sub>0</sub>", "&#x2080;").Replace("<SUB>1</SUB>", "&#x2081;").Replace("<SUB>2</SUB>", "&#x2082;").Replace("<sub>1</sub>", "&#x2081;").Replace("<sub>2</sub>", "&#x2082;")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("</p>\n <p align=\"justify\"><span class=\"head\">&#256;.</span>", " &#256;.")
+                .Replace("iodine &#699;", "iodine</span> &#699;")
+                .Replace("race <i>", "race</span> <i>")
+                .Replace("reasonable K", "reasonable</span> K")
+                .Replace("receive <i>", "receive</span> <i>")
+                .Replace("region <i>", "region</span> <i>")
+                .Replace("renal artery A", "renal artery</span> A")
+                .Replace("republic</sapn> <i>", "republic</span> <i>")
                 .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>");
 
             string[] split = s.Split('\n');
@@ -137,8 +121,16 @@ namespace HawDict
         {
             string entryName = node.FirstChild.OuterHtml;
             string entryValue = node.InnerHtml.Remove(0, entryName.Length);
-
-            return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+            
+            try
+            {
+                return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+            }
+            catch (Exception)
+            {
+                Log("Unable to parse Name: \"{0}\" Value: \"{1}\"", entryName, entryValue);
+                return null;
+            }
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)
