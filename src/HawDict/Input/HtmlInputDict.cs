@@ -73,7 +73,11 @@ namespace HawDict
         {
             foreach (HtmlNode entryNode in doc.DocumentNode.Descendants(EntryHtmlTag).Where(n => IsEntryNode(n)))
             {
-                yield return ParseEntryNode(entryNode);
+                var rawData = ParseEntryNode(entryNode);
+                if (rawData is not null)
+                {
+                    yield return rawData;
+                }
             }
         }
 

@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace HawDict
 {
@@ -25,14 +24,7 @@ namespace HawDict
 
         public List<string> Authors { get; private set; } = new List<string>();
 
-        public string FileVersion
-        {
-            get
-            {
-                AssemblyName name = Assembly.GetEntryAssembly().GetName();
-                return name.Version.ToString();
-            }
-        }
+        public string FileVersion => AppInfo.Version;
 
         #endregion
 

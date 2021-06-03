@@ -21,6 +21,8 @@ namespace HawDict
         {
             Console.OutputEncoding = Encoding.UTF8;
 
+            Console.WriteLine("{0} v{1}", AppInfo.Name, AppInfo.Version);
+
             string rootDir = (null != args && args.Length > 0) ? args[0] : Environment.CurrentDirectory;
 
             try

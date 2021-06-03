@@ -58,6 +58,13 @@ namespace HawDict
                 .Replace("<sub>0</sub>", "&#x2080;").Replace("<SUB>1</SUB>", "&#x2081;").Replace("<SUB>2</SUB>", "&#x2082;").Replace("<sub>1</sub>", "&#x2081;").Replace("<sub>2</sub>", "&#x2082;")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("</p>\n <p align=\"justify\"><span class=\"head\">&#256;.</span>", " &#256;.")
+                .Replace("iodine &#699;", "iodine</span> &#699;")
+                .Replace("race <i>", "race</span> <i>")
+                .Replace("reasonable K", "reasonable</span> K")
+                .Replace("receive <i>", "receive</span> <i>")
+                .Replace("region <i>", "region</span> <i>")
+                .Replace("renal artery A", "renal artery</span> A")
+                .Replace("republic</sapn> <i>", "republic</span> <i>")
                 .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>");
 
             string[] split = s.Split('\n');
@@ -114,8 +121,16 @@ namespace HawDict
         {
             string entryName = node.FirstChild.OuterHtml;
             string entryValue = node.InnerHtml.Remove(0, entryName.Length);
-
-            return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+            
+            try
+            {
+                return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+            }
+            catch (Exception)
+            {
+                Log("Unable to parse Name: \"{0}\" Value: \"{1}\"", entryName, entryValue);
+                return null;
+            }
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)
