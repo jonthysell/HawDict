@@ -239,7 +239,7 @@ namespace HawDict
                 key
             };
 
-            string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "").Replace("*", "");
+            string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "").Replace("*", "").Replace("-", "");
 
             synonyms.Add(s);
             synonyms.Add(StringUtils.ReplaceOkina(s));
