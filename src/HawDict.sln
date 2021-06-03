@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawDict", "HawDict\HawDict.csproj", "{50C2D599-98A1-496B-8E0D-561071C54BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HawDict", "HawDict\HawDict.csproj", "{50C2D599-98A1-496B-8E0D-561071C54BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FEB42BBC-DE8C-4F58-A3AD-13E3B6294F50}
+		SolutionGuid = {60AA71CD-EA06-4677-A2B2-4F852F50DE7A}
 	EndGlobalSection
 EndGlobal

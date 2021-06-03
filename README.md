@@ -1,8 +1,14 @@
 # HawDict #
 
+[![CI Build](https://github.com/jonthysell/HawDict/actions/workflows/ci.yml/badge.svg)](https://github.com/jonthysell/HawDict/actions/workflows/ci.yml)
+
 HawDict creates offline versions of popular Hawaiian dictionaries in a variety of digital dictionary formats.
 
 By default all files produced by HawDict will use the proper Unicode characters for the [ʻokina](http://www.olelo.hawaii.edu/olelo/puana/okina.php) and [kahakōs](http://www.olelo.hawaii.edu/olelo/puana/kahako.php): `ʻ ā ē ī ō ū Ā Ē Ī Ō Ū`. However, for (typically older) dictionary formats where these characters cannot be used, HawDict will substitute ASCII instead: `' a e i o u A E I O U`.
+
+HawDict was written in C# and should run anywhere that supports [.NET 5.0](https://github.com/dotnet/core/blob/master/release-notes/5.0/5.0-supported-os.md). It has been officially tested on:
+
+* Windows 10
 
 For help building/running HawDict and/or using the created dictionaries, please see the [HawDict Wiki](https://github.com/jonthysell/HawDict/wiki).
 
@@ -40,4 +46,4 @@ HawDict is open-source under the MIT license.
 
 All source data (terms, definitions, etc) are copyright their respective copyright owners.
 
-HawDict Copyright (c) 2018-2019 Jon Thysell
+HawDict Copyright (c) 2018-2021 Jon Thysell
