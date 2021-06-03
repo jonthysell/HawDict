@@ -29,8 +29,9 @@ namespace HawDict
 
 
             s = s.Replace("<span></p>Ke-au-kaha</span>", "<span>Ke-au-kaha</span>")
-                .Replace("before the time of  </td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>Kiha-a-Pi&#699;ilani, and has been in continual use since then. <i>Lit.,</i> big Ke-awa.</p>", "before the time of Kiha-a-Pi&#699;ilani, and has been in continual use since then. <i>Lit.,</i> big Ke-awa.</p>")
+                .Replace("  </td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", " ")
                 .Replace("<span></p>Ke-kaulike", "<span>Ke-kaulike")
+                .Replace("surflng", "surfing")
                 .Replace("<?>", ";");
 
             return s;

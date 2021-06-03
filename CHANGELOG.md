@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## vNext ##
+
+* Fixed PlaceNames source parsing
+
 ## v0.10 ##
 
 * Converted project to .NET 5
