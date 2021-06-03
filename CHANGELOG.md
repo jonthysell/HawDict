@@ -3,7 +3,8 @@
 ## v0.10 ##
 
 * Converted project to .NET 5
-* Fixed clean-up of source HTML
+* Updated to HtmlAgilityPack 1.11.33
+* Fixed source HTML parsing and cleanup
 
 ## v0.9.19091.1851 ##
 
