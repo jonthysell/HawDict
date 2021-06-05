@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## vNext ##
+## v0.11 ##
 
 * Fixed PlaceNames source parsing
 
