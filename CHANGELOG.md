@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Fixed PukuiElbert source parsing of page breaks
+
 ## v0.11 ##
 
 * Fixed PlaceNames source parsing

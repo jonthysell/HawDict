@@ -36,8 +36,8 @@ namespace HawDict
         protected override string CleanSourceHtml(string s)
         {
             return s
-                .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
-                .Replace("</td></tr></table><p>&nbsp;</p>\n<p>&nbsp;</p>\n<table style=\"margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
+                .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
+                .Replace("</td></tr></table><p>&nbsp;</p>\n<p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
                 .Replace("&4 ", "Redup. ").Replace("&;n", "n.").Replace("&(PCP; ", "(PCP ").Replace("(Mele ", "(Mele. ")
                 .Replace("<span lang=\"HAW\">N&#257;n&#257;</span> 3", "<span>N&#257;n&#257;.</span> 3").Replace("N&#257;n&#257; 2", "N&#257;n&#257;. 2").Replace("N&#257;n&#257; 1", "N&#257;n&#257;. 1")
                 .Replace("..", ".").Replace(".</span>.", ".</span>").Replace(".</em>.", ".</em>")
