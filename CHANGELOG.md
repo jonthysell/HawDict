@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.12 ##
 
 * Fixed PukuiElbert source parsing of page breaks
 * Fixed MamakaKaiao source parsing of page breaks
