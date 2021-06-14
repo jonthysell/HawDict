@@ -3,6 +3,7 @@
 ## next ##
 
 * Fixed PukuiElbert source parsing of page breaks
+* Fixed MamakaKaiao source parsing of page breaks
 
 ## v0.11 ##
 

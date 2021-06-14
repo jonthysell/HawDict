@@ -27,7 +27,6 @@ namespace HawDict
         {
             s = Regex.Replace(s, "<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<br><br><br><br><br>\n<div align=\"right\">GLOSSARY</div>.*<h1>AaAaAa</h1>", "<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<h1>AaAaAa</h1>", RegexOptions.Singleline);
 
-
             s = s.Replace("<span></p>Ke-au-kaha</span>", "<span>Ke-au-kaha</span>")
                 .Replace("  </td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", " ")
                 .Replace("<span></p>Ke-kaulike", "<span>Ke-kaulike")

@@ -37,7 +37,7 @@ namespace HawDict
 
             s = s
                 .Replace("spanclass", "span class")
-                .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
+                .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"Justify\">\n", " ")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"justify\"><i>", " <i>")
                 .Replace("</i></span>", "</span>")
