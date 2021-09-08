@@ -3,6 +3,7 @@
 
 using System;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HawDict
 {
@@ -36,10 +37,26 @@ namespace HawDict
                     new PlaceNamesInputDict(PrintLine),
                 };
 
-                foreach (InputDictBase dictionary in dictionaries)
+                Parallel.ForEach(dictionaries, (dict) =>
                 {
-                    dictionary.Process(rootDir);
-                }
+                    try
+                    {
+                        dict.Process(rootDir);
+                    }
+                    catch (AggregateException ex)
+                    {
+                        PrintException(ex);
+                        foreach (Exception innerEx in ex.InnerExceptions)
+                        {
+                            PrintException(innerEx);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PrintException(ex);
+                    }
+                });
+
             }
             catch (AggregateException ex)
             {

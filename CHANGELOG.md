@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Process dictionaries in parallel to speed up result
+
 ## v0.12 ##
 
 * Fixed PukuiElbert source parsing of page breaks
