@@ -28,9 +28,18 @@ namespace HawDict
             s = Regex.Replace(s, "<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<br><br><br><br><br>\n<div align=\"right\">GLOSSARY</div>.*<h1>AaAaAa</h1>", "<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>\n<h1>AaAaAa</h1>", RegexOptions.Singleline);
 
             s = s.Replace("<span></p>Ke-au-kaha</span>", "<span>Ke-au-kaha</span>")
-                .Replace("  </td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", " ")
+                .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", " ")
                 .Replace("<span></p>Ke-kaulike", "<span>Ke-kaulike")
+                .Replace("-\n   ", "-")
+                .Replace("-   ", "-")
+                .Replace("-\n", "-")
+                .Replace("K&#333;k&#299;-o- Wailau,</i>", "K&#333;k&#299;-o-Wailau,</i>")
                 .Replace("surflng", "surfing")
+                .Replace("<span>Ka-ua-kinikin</span>i.", "<span>Ka-ua-kinikini</span>.")
+                .Replace("(Gabriel Bellinghausen,1848-1933)", "(Gabriel Bellinghausen, 1848-1933)")
+                .Replace("Honolu.u.", "Honolulu.")
+                .Replace("lawanui</span>\n", "lawanui</span>")
+                .Replace("mythical.bird", "mythical bird")
                 .Replace("<?>", ";");
 
             return s;
@@ -44,7 +53,7 @@ namespace HawDict
         protected override string[] ParseEntryNode(HtmlNode node)
         {
             string entryName = node.FirstChild.OuterHtml;
-            string entryValue = node.InnerHtml.Remove(0, entryName.Length + 1);
+            string entryValue = node.InnerHtml.Remove(0, entryName.Length);
 
             try
             {
@@ -55,6 +64,16 @@ namespace HawDict
                 Log("Unable to parse Name: \"{0}\" Value: \"{1}\"", entryName, entryValue);
                 return null;
             }
+        }
+
+        protected override string FinalCleanKey(string key)
+        {
+            return key.TrimEnd('.').Replace("- ", "-");
+        }
+
+        protected override string FinalCleanValue(string value)
+        {
+            return StringUtils.FixSentenceSpacing(value.TrimStart('.').TrimStart());
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)

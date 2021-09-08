@@ -109,8 +109,7 @@ namespace HawDict
 
         public static string FixSentenceSpacing(string s)
         {
-            s = PunctuationSplitterRegex.Replace(s, @"$1$2 $3");
-            return s;
+            return PunctuationSplitterRegex.Replace(s, @"$1$2 $3");
         }
 
         private static Regex PunctuationSplitterRegex = new Regex(@"([^\W\d_][^\W\d_])([\.,\!\?])([^\W\d_])", RegexOptions.IgnoreCase);

@@ -4,6 +4,7 @@
 
 * Process dictionaries in parallel to speed up result
 * Improved MamakaKaiao source parsing and cleanup
+* Improved PlaceNames source parsing and cleanup
 
 ## v0.12 ##
 
