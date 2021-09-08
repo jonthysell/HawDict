@@ -38,8 +38,12 @@ namespace HawDict
             s = s
                 .Replace("spanclass", "span class")
                 .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
+                .Replace("</td></tr></table><p>&nbsp;</p>\n<p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"Justify\">\n", " ")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"justify\"><i>", " <i>")
+                .Replace("</p>\n\n\n \n\n\n <p align=\"Justify\"><i>", " <i>")
+                .Replace("</i>\n</p>\n\n\n \n\n <p><i>", " ")
+                .Replace("</p>\n\n\n \n\n\n <p>", " ")
                 .Replace("</i></span>", "</span>")
                 .Replace("<SPAN CLASS=\"HEAD\">", "<span class=\"head\">")
                 .Replace("</SPAN>", "</span>")
@@ -58,13 +62,46 @@ namespace HawDict
                 .Replace("<sub>0</sub>", "&#x2080;").Replace("<SUB>1</SUB>", "&#x2081;").Replace("<SUB>2</SUB>", "&#x2082;").Replace("<sub>1</sub>", "&#x2081;").Replace("<sub>2</sub>", "&#x2082;")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("</p>\n <p align=\"justify\"><span class=\"head\">&#256;.</span>", " &#256;.")
+                .Replace("&#699;auk&#257;.See", "&#699;auk&#257;. See")
+                .Replace("u.</i>s", "u.")
+                .Replace("<i>.Abb.</i>", "<i>Abb.</i>")
+                .Replace("<span class=\"head\">Au  Pala&#699;o  K&#363;.hou</span>", "<span class=\"head\">Au  Pala&#699;o  K&#363;&#183;hou</span>")
+                .Replace("<span class=\"head\">Au  Pala&#699;o</span> K&#363; kahiko ", "<span class=\"head\">Au  Pala&#699;o K&#363;&#183;kahiko</span> ")
+                .Replace("<span class=\"head\">Au Pala&#699;o K&#363;.waena</span>", "<span class=\"head\">Au Pala&#699;o K&#363;&#183;waena</span>")
+                .Replace("<span class=\"head\">k&#299;.like&#183;like</span>", "<span class=\"head\">k&#299;&#183;like&#183;like</span>")
+                .Replace("Ho&#699;ok?pa&#699;i pukaaniani", "Ho&#699;ok&#363;pa&#699;i pukaaniani")
+                .Replace("<i>Lit.,</i> cutting line.<br>\nchange should be made from the original, in proofreading; stet. <i>Lit.,</i> mark (for) leaving (as is).", "<i>Lit.,</i> cutting line.")
+                .Replace("to show that no\n</p>", "to show that no change should be made from the original, in proofreading; stet. <i>Lit.,</i> mark (for) leaving (as is).\n</p>")
                 .Replace("iodine &#699;", "iodine</span> &#699;")
+                .Replace("i.e. the</i></p>", "i.e. the").Replace("pressure remains constant. ", "pressure remains constant.</i> ")
+                .Replace("jack-o&#699;-lantern", "jack-o'-lantern")
+                .Replace("June 10,1998", "June 10, 1998")
+                .Replace("83, 93,103,113", "83, 93, 103, 113")
+                .Replace("&#699;I;&#699;o wiliwili", "&#699;I&#699;o wiliwili")
+                .Replace("k&#363;;kaelio", "k&#363;kaelio")
+                .Replace("Organ</i></p>", "Organ</i> ")
                 .Replace("race <i>", "race</span> <i>")
                 .Replace("reasonable K", "reasonable</span> K")
+                .Replace("reasoning</span>.", "reasoning</span>")
                 .Replace("receive <i>", "receive</span> <i>")
                 .Replace("region <i>", "region</span> <i>")
                 .Replace("renal artery A", "renal artery</span> A")
                 .Replace("republic</sapn> <i>", "republic</span> <i>")
+                .Replace("<i>To</i> &tilde; <i>smooth; also smooth</i> &tilde;<i>er;glib</i>", "<i>To &tilde; smooth; also smooth &tilde;er; glib</i>")
+                .Replace("&tilde;  ejecta.", "&tilde; ejecta. ")
+                .Replace("waena.</i>\nloa &#699;a&#699; ", "waena.</i></p>\n<p align=\"justify\"><span class=\"head\">loa</span> <i>&#699;a&#699;</i> ")
+                .Replace("Slip &#699;n&#699; Slide", "Slip 'n' Slide")
+                .Replace(".Double", "Double")
+                .Replace("venugopal", "")
+                .Replace("k&#333;&#183;pa&#699;a</span> Ma&#699;i&#699; <i>", "k&#333;&#183;pa&#699;a</span> <i>Ma&#699;i ")
+                .Replace("s&#699;", "s'").Replace("&#699;s", "'s")
+                .Replace("&#699;<i>a</i>&#699;", "<i>&#699;a&#699;</i>")
+                .Replace("<i>&#699;a&#699; </i>", "<i>&#699;a&#699;</i> ")
+                .Replace("</span> &#699;a&#699; ", "</span> <i>&#699;a&#699;</i> ")
+                .Replace("</span> &#699; <i>a</i>&#699; ", "</span> <i>&#699;a&#699;</i> ")
+                .Replace(".&#699;", ". &#699;").Replace(".</i>&#699;", ".</i> &#699;").Replace("&#699; ", "&#699;")
+                .Replace(".<i>", ". <i>").Replace(",<i>", ", <i>")
+                .Replace("&tilde;.", "&tilde;. ").Replace(".&tilde;", ". &tilde;")
                 .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>");
 
             string[] split = s.Split('\n');
@@ -131,6 +168,11 @@ namespace HawDict
                 Log("Unable to parse Name: \"{0}\" Value: \"{1}\"", entryName, entryValue);
                 return null;
             }
+        }
+
+        protected override string FinalCleanValue(string value)
+        {
+            return StringUtils.FixSentenceSpacing(value);
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)

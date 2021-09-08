@@ -100,6 +100,9 @@ namespace HawDict
                 string key = StringUtils.NormalizeWhiteSpace(StringUtils.HtmlToUtf8(entry[0]));
                 string value = string.Join(" ", entry.Skip(1).Select(s => StringUtils.NormalizeWhiteSpace(StringUtils.HtmlToUtf8(s))));
 
+                key = FinalCleanKey(key);
+                value = FinalCleanValue(value);
+
                 _cleanedEntries.Add(new KeyValuePair<string, string>(key, value));
             }
         }
@@ -109,5 +112,9 @@ namespace HawDict
         protected abstract bool IsEntryNode(HtmlNode node);
 
         protected abstract string[] ParseEntryNode(HtmlNode node);
+
+        protected virtual string FinalCleanKey(string key) => key;
+
+        protected virtual string FinalCleanValue(string value) => value;
     }
 }

@@ -4,6 +4,7 @@
 using System;
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 using HtmlAgilityPack;
 
@@ -105,6 +106,14 @@ namespace HawDict
             }
             return new string(src, 0, dstIdx);
         }
+
+        public static string FixSentenceSpacing(string s)
+        {
+            s = PunctuationSplitterRegex.Replace(s, @"$1$2 $3");
+            return s;
+        }
+
+        private static Regex PunctuationSplitterRegex = new Regex(@"([^\W\d_][^\W\d_])([\.,\!\?])([^\W\d_])", RegexOptions.IgnoreCase);
 
         public static string EscapeForXml(string s)
         {
