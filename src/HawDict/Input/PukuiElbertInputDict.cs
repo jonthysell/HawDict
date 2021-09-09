@@ -46,6 +46,19 @@ namespace HawDict
                 .Replace("h3", "span")
                 // Typo fixes:
                 .Replace("nuts containing while,", "nuts containing white,")
+                .Replace("Country?f", "Country")
+                .Replace("palapala ho&#699;oku,u", "palapala ho&#699;oku&#699;u")
+                .Replace("see saying, &#699;ol&#275;,&#699;ol&#275;", "see saying, &#699;ol&#275;&#699;ol&#275;")
+                .Replace("Haw.-Eng.&#699;", "Haw.-Eng.")
+                .Replace("See &#699;ao&#699;ao &#699;ai,&#699;&#275;,", "See &#699;ao&#699;ao &#699;ai&#699;&#275;,")
+                .Replace("<p>See <span lang=\"HAW\">m&#257;,au&#275;</span>.</p>", "<p>See <span lang=\"HAW\">m&#257;&#699;au&#275;</span>.</p>")
+                .Replace("<span lang=\"HAW\">ho&#699;o.mo&#699;o,puna</span>", "<span lang=\"HAW\">ho&#699;o.mo&#699;o.puna</span>")
+                .Replace("<span lang=\"HAW\">h&#333;,&#699;olo.p&#363;</span>", "<span lang=\"HAW\">h&#333;.&#699;olo.p&#363;</span>")
+                .Replace("<span lang=\"HAW\">ho&#699;o,poe.poe</span>Redup.", "<span lang=\"HAW\">ho&#699;o.poe.poe</span> Redup.")
+                .Replace("<span lang=\"HAW\">ho&#699;o.p&#333;,loli</span>", "<span lang=\"HAW\">ho&#699;o.p&#333;.loli</span>")
+                .Replace("<span lang=\"HAW\">&#699;&#257;pe&#699;,&#699;ape&#699;a</span>", "<span lang=\"HAW\">&#699;&#257;pe&#699;ape&#699;a</span>")
+                .Replace("<span lang=\"HAW\">kani&#257;,&#699;au</span>", "<span lang=\"HAW\">kani&#257;&#699;au</span>")
+                .Replace("<span lang=\"HAW\">ho&#699;on&#257;,aikola</span>", "<span lang=\"HAW\">ho&#699;on&#257;&#699;aikola</span>")
                 ;
         }
 
@@ -61,6 +74,11 @@ namespace HawDict
         protected override string[] ParseEntryNode(HtmlNode node)
         {
             return node.ChildNodes.Where(c => c.Name == "span" || c.Name == "p").Select(n => StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(n.OuterHtml))).ToArray();
+        }
+
+        protected override string FinalCleanValue(string value)
+        {
+            return StringUtils.FixSentenceSpacing(value);
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)

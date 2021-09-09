@@ -15,3 +15,4 @@ Testing that 12 p.m. stays 12 p.m. Testing that 12 p.m. stays 12 p.m.	Testing th
 # Testing with samples
 named for W.W.L. Bowers	named for W.W.L. Bowers
 captain of H.M.S. Blonde,	captain of H.M.S. Blonde,
+PCP a(f,s)o.	PCP a(f,s)o.
