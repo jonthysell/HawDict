@@ -14,8 +14,8 @@ namespace HawDict
 
         public PukuiElbertInputDict(TranslationType translationType, LogLine logLine) : base("PukuiElbert", translationType, logLine)
         {
-            ShortTitle = string.Format("Hawaiian Dictionary ({0})", TranslationType == TranslationType.HawToEng ? "HAW-ENG" : "ENG-HAW");
-            LongTitle = string.Format("Hawaiian Dictionary, Revised and Enlarged Edition ({0})", TranslationType == TranslationType.HawToEng ? "Hawaiian-English" : "English-Hawaiian");
+            ShortTitle = $"Hawaiian Dictionary ({(TranslationType == TranslationType.HawToEng ? "HAW-ENG" : "ENG-HAW")})";
+            LongTitle = $"Hawaiian Dictionary, Revised and Enlarged Edition ({(TranslationType == TranslationType.HawToEng ? "Hawaiian-English" : "English-Hawaiian")})";
             Description = "The reference standard Hawaiian-English and English-Hawaiian dictionary. Copyright (c) 1986 University of Hawaii Press (ISBN 978-0824807030)";
 
             Authors.AddRange(new string[] { "Mary Kawena Pūkuʻi", "Samuel H. Elbert" });

@@ -27,7 +27,7 @@ namespace HawDict
                 throw new ArgumentNullException(nameof(dictDir));
             }
 
-            string xdxfFile = Path.Combine(dictDir, string.Format("{0}.{1}.dict.xdxf", ID, TranslationType.ToString()));
+            string xdxfFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.dict.xdxf");
 
             using (FileStream fs = new FileStream(xdxfFile, FileMode.Create))
             {

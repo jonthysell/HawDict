@@ -144,7 +144,7 @@ namespace HawDict
                 throw new ArgumentNullException(nameof(tag));
             }
 
-            return string.Format("<{0}>{1}</{0}>", tag, s);
+            return $"<{tag}>{s}</{tag}>";
         }
 
         public static string WrapInTag(string s, string target, string tag)

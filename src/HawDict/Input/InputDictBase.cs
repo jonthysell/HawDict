@@ -55,7 +55,7 @@ namespace HawDict
 
             Log("Save start.");
 
-            string cleanFile = Path.Combine(DictDir, string.Format("{0}.{1}.clean.txt", ID, TranslationType.ToString()));
+            string cleanFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.clean.txt");
             SaveCleanFile(cleanFile);
 
             SaveOutputDict<XdxfDictionary>();

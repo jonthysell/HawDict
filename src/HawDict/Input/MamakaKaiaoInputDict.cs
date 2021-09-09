@@ -12,8 +12,8 @@ namespace HawDict
     {
         public MamakaKaiaoInputDict(TranslationType translationType, LogLine logLine) : base("MamakaKaiao", translationType, logLine)
         {
-            ShortTitle = string.Format("Māmaka Kaiao ({0})", TranslationType == TranslationType.HawToEng ? "HAW-ENG" : "ENG-HAW");
-            LongTitle = string.Format("Māmaka Kaiao: A Modern Hawaiian Vocabulary ({0})", TranslationType == TranslationType.HawToEng ? "Hawaiian-English" : "English-Hawaiian");
+            ShortTitle = $"Māmaka Kaiao ({(TranslationType == TranslationType.HawToEng ? "HAW-ENG" : "ENG-HAW")})";
+            LongTitle = $"Māmaka Kaiao: A Modern Hawaiian Vocabulary ({(TranslationType == TranslationType.HawToEng ? "Hawaiian-English" : "English-Hawaiian")})";
             Description = "A compilation of Hawaiian words that have been created, collected, and approved by the Hawaiian Lexicon Committee from 1987 through 2000. Copyright (c) 2003 ʻAha Pūnana Leo and Hale Kuamoʻo, College of Hawaiian Language, University of Hawaiʻi at Hilo (ISBN 978-0824828035)";
 
             Authors.AddRange(new string[] { "Kōmike Huaʻōlelo", "Hale Kuamoʻo", "ʻAha Pūnana Leo" });

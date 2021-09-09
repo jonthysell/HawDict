@@ -7,6 +7,7 @@
 * Improved PukuiElbert source parsing and cleanup
 * New HawDict.Test test library with StringUtils tests
 * Process dictionaries in parallel to speed up result
+* Switch from string.Format to interpolated strings to improve performance
 
 ## v0.12 ##
 

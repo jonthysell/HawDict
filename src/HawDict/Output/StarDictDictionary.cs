@@ -29,9 +29,9 @@ namespace HawDict
 
         private void SaveDataFiles(string dictDir, out long idxFileSize, out int synWordCount)
         {
-            string dictFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.dict", ID, TranslationType.ToString()));
-            string idxFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.idx", ID, TranslationType.ToString()));
-            string synFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.syn", ID, TranslationType.ToString()));
+            string dictFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.StarDict.dict");
+            string idxFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.StarDict.idx");
+            string synFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.StarDict.syn");
 
             BinaryWriter dictWriter = new BinaryWriter(new FileStream(dictFile, FileMode.Create), Encoding.UTF8);
             BinaryWriter idxWriter = new BinaryWriter(new FileStream(idxFile, FileMode.Create), Encoding.UTF8);
@@ -96,7 +96,7 @@ namespace HawDict
 
         private void SaveIfoFile(string dictDir, long idxFileSize, int synWordCount)
         {
-            string ifoFile = Path.Combine(dictDir, string.Format("{0}.{1}.StarDict.ifo", ID, TranslationType.ToString()));
+            string ifoFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.StarDict.ifo");
 
             using (BinaryWriter ifoWriter = new BinaryWriter(new FileStream(ifoFile, FileMode.Create), Encoding.UTF8))
             {

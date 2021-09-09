@@ -131,7 +131,7 @@ namespace HawDict
             if (value.StartsWith("<gr>"))
             {
                 int grammarEndIndex = value.IndexOf("</gr>") + 5;
-                grammar = string.Format("{0}", value.Substring(0, grammarEndIndex));
+                grammar = $"{value.Substring(0, grammarEndIndex)}";
                 value = value.Substring(grammarEndIndex + 1);
             }
 
@@ -140,11 +140,11 @@ namespace HawDict
             if (definitions.Count() > 1)
             {
                 value = string.Join("</deftext></def><def><deftext>", definitions);
-                value = string.Format("<def>{0}<def><deftext>{1}</deftext></def></def>", grammar, value);
+                value = $"<def>{grammar}<def><deftext>{value}</deftext></def></def>";
             }
             else
             {
-                value = string.Format("<def>{0}<deftext>{1}</deftext></def>", grammar, value);
+                value = $"<def>{grammar}<deftext>{value}</deftext></def>";
             }
 
             return value;
@@ -154,8 +154,8 @@ namespace HawDict
         {
             int nextFoundIndex = -1;
 
-            string numStr = string.Format("{0}. ", num);
-            string nextNumStr = string.Format(" {0}. ", num + 1);
+            string numStr = $"{num}. ";
+            string nextNumStr = $" {num + 1}. ";
 
             if (value.StartsWith(numStr) && (nextFoundIndex = value.IndexOf(nextNumStr)) > 0)
             {
@@ -195,38 +195,38 @@ namespace HawDict
 
         private static string AddXdxfAbbreviationTags(string value, string abbreviation, bool grammar)
         {
-            value = value.Replace(string.Format(" {0} ", abbreviation), string.Format(" <abbr>{0}</abbr> ", abbreviation));
-            value = value.Replace(string.Format("({0} ", abbreviation), string.Format("(<abbr>{0}</abbr> ", abbreviation));
-            value = value.Replace(string.Format(" {0})", abbreviation), string.Format(" <abbr>{0}</abbr>)", abbreviation));
-            value = value.Replace(string.Format("({0})", abbreviation), string.Format("(<abbr>{0}</abbr>)", abbreviation));
+            value = value.Replace($" {abbreviation} ", $" <abbr>{abbreviation}</abbr> ");
+            value = value.Replace($"({abbreviation} ", $"(<abbr>{abbreviation}</abbr> ");
+            value = value.Replace($" {abbreviation})", $" <abbr>{abbreviation}</abbr>)");
+            value = value.Replace($"({abbreviation})", $"(<abbr>{abbreviation}</abbr>)");
 
-            value = value.Replace(string.Format("{0}.", abbreviation), string.Format("<abbr>{0}</abbr>.", abbreviation));
+            value = value.Replace($"{abbreviation}.", $"<abbr>{abbreviation}</abbr>.");
 
-            value = value.Replace(string.Format("{0};", abbreviation), string.Format("<abbr>{0}</abbr>;", abbreviation));
+            value = value.Replace($"{abbreviation};", $"<abbr>{abbreviation}</abbr>;");
 
-            value = value.Replace(string.Format("{0},", abbreviation), string.Format("<abbr>{0}</abbr>,", abbreviation));
-            value = value.Replace(string.Format("({0},", abbreviation), string.Format("(<abbr>{0}</abbr>,", abbreviation));
+            value = value.Replace($"{abbreviation},", $"<abbr>{abbreviation}</abbr>,");
+            value = value.Replace($"({abbreviation},", $"(<abbr>{abbreviation}</abbr>,");
 
-            value = value.Replace(string.Format("{0}/", abbreviation), string.Format("<abbr>{0}</abbr>/", abbreviation));
-            value = value.Replace(string.Format("/{0}", abbreviation), string.Format("/<abbr>{0}</abbr>", abbreviation));
+            value = value.Replace($"{abbreviation}/", $"<abbr>{abbreviation}</abbr>/");
+            value = value.Replace($"/{abbreviation}", $"/<abbr>{abbreviation}</abbr>");
 
-            value = value.Replace(string.Format("—{0}", abbreviation), string.Format("—<abbr>{0}</abbr> ", abbreviation));
+            value = value.Replace($"—{abbreviation}", $"—<abbr>{abbreviation}</abbr> ");
 
             if (value.StartsWith(abbreviation + " "))
             {
                 if (grammar)
                 {
-                    value = string.Format("<gr><abbr>{0}</abbr></gr>{1}", abbreviation, value.Substring(abbreviation.Length));
+                    value = $"<gr><abbr>{abbreviation}</abbr></gr>{value.Substring(abbreviation.Length)}";
                 }
                 else
                 {
-                    value = string.Format("<abbr>{0}</abbr>{1}", abbreviation, value.Substring(abbreviation.Length));
+                    value = $"<abbr>{abbreviation}</abbr>{value.Substring(abbreviation.Length)}";
                 }
             }
 
             if (value.EndsWith(" " + abbreviation))
             {
-                value = string.Format("{0}<abbr>{1}</abbr>", value.Substring(0, value.Length - abbreviation.Length), abbreviation);
+                value = $"{value.Substring(0, value.Length - abbreviation.Length)}<abbr>{abbreviation}</abbr>";
             }
 
             return value;
