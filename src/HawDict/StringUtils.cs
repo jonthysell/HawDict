@@ -109,10 +109,13 @@ namespace HawDict
 
         public static string FixSentenceSpacing(string s)
         {
-            return PunctuationSplitterRegex.Replace(s, @"$1$2 $3");
+            s = AcronymSplitterRegex.Replace(s, @"$1 $3");
+            s = PunctuationSplitterRegex.Replace(s, @"$1$2 $3");
+            return s;
         }
 
-        private static Regex PunctuationSplitterRegex = new Regex(@"([^\W\d_][^\W\d_])([\.,\!\?])([^\W\d_])", RegexOptions.IgnoreCase);
+        private static Regex AcronymSplitterRegex = new Regex(@"(([a-zA-Z]\.){2,})([a-zA-ZāēīōūĀĒĪŌŪʻ][^\.])");
+        private static Regex PunctuationSplitterRegex = new Regex(@"([a-zāēīōū])([\.,\!\?])(ʻ?[A-ZĀĒĪŌŪ])");
 
         public static string EscapeForXml(string s)
         {

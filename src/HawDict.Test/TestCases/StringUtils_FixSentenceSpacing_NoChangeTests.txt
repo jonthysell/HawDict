@@ -1,0 +1,17 @@
+﻿# Testing with some known acronyms
+A.M.	A.M.
+a.m.	a.m.
+P.M.	P.M.
+p.m.	p.m.
+Testing that 12 A.M. stays 12 A.M.	Testing that 12 A.M. stays 12 A.M.
+Testing that 12 a.m. stays 12 a.m.	Testing that 12 a.m. stays 12 a.m.
+Testing that 12 P.M. stays 12 P.M.	Testing that 12 P.M. stays 12 P.M.
+Testing that 12 p.m. stays 12 p.m.	Testing that 12 p.m. stays 12 p.m.
+Testing that 12 A.M. stays 12 A.M. Testing that 12 A.M. stays 12 A.M.	Testing that 12 A.M. stays 12 A.M. Testing that 12 A.M. stays 12 A.M.
+Testing that 12 a.m. stays 12 a.m. Testing that 12 a.m. stays 12 a.m.	Testing that 12 a.m. stays 12 a.m. Testing that 12 a.m. stays 12 a.m.
+Testing that 12 P.M. stays 12 P.M. Testing that 12 P.M. stays 12 P.M.	Testing that 12 P.M. stays 12 P.M. Testing that 12 P.M. stays 12 P.M.
+Testing that 12 p.m. stays 12 p.m. Testing that 12 p.m. stays 12 p.m.	Testing that 12 p.m. stays 12 p.m. Testing that 12 p.m. stays 12 p.m.
+
+# Testing with samples
+named for W.W.L. Bowers	named for W.W.L. Bowers
+captain of H.M.S. Blonde,	captain of H.M.S. Blonde,

@@ -1,0 +1,20 @@
+﻿# Testing with some known acronyms
+Testing that 12 A.M.stays 12 A.M.	Testing that 12 A.M. stays 12 A.M.
+Testing that 12 a.m.stays 12 a.m.	Testing that 12 a.m. stays 12 a.m.
+Testing that 12 P.M.stays 12 P.M.	Testing that 12 P.M. stays 12 P.M.
+Testing that 12 p.m.stays 12 p.m.	Testing that 12 p.m. stays 12 p.m.
+Testing that 12 A.M. stays 12 A.M.Testing that 12 A.M. stays 12 A.M.	Testing that 12 A.M. stays 12 A.M. Testing that 12 A.M. stays 12 A.M.
+Testing that 12 a.m. stays 12 a.m.Testing that 12 a.m. stays 12 a.m.	Testing that 12 a.m. stays 12 a.m. Testing that 12 a.m. stays 12 a.m.
+Testing that 12 P.M. stays 12 P.M.Testing that 12 P.M. stays 12 P.M.	Testing that 12 P.M. stays 12 P.M. Testing that 12 P.M. stays 12 P.M.
+Testing that 12 p.m. stays 12 p.m.Testing that 12 p.m. stays 12 p.m.	Testing that 12 p.m. stays 12 p.m. Testing that 12 p.m. stays 12 p.m.
+
+# Testing with samples
+lele, mū.Rose beetle,	lele, mū. Rose beetle,
+pilikua.See saying	pilikua. See saying
+ʻihiʻihi,Kaneka,	ʻihiʻihi, Kaneka,
+ʻākeke.Volcanic	ʻākeke. Volcanic
+lālahilewa.Cumulus	lālahilewa. Cumulus
+component.ʻŪmaupaʻa	component. ʻŪmaupaʻa
+tournament.Māhele	tournament. Māhele
+light, radio,TV,	light, radio, TV,
+i.e.formally	i.e. formally

@@ -2,9 +2,10 @@
 
 ## next ##
 
-* Process dictionaries in parallel to speed up result
 * Improved MamakaKaiao source parsing and cleanup
 * Improved PlaceNames source parsing and cleanup
+* New HawDict.Test test library with StringUtils tests
+* Process dictionaries in parallel to speed up result
 
 ## v0.12 ##
 
