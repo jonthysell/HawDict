@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.13 ##
 
 * Improved MamakaKaiao source parsing and cleanup
 * Improved PlaceNames source parsing and cleanup
