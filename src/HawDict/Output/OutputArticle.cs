@@ -79,7 +79,6 @@ namespace HawDict
                 string value = GetXdxfValue(true);
 
                 value = value
-                    .Replace("<gr>", "<p>").Replace("</gr>", "</p>")
                     .Replace("<abbr>", "<i>").Replace("</abbr>", "</i>");
 
                 value = value
@@ -87,6 +86,12 @@ namespace HawDict
                     .Replace("<deftext>", "<p>").Replace("</deftext>", "</p>");
 
                 value = Regex.Replace(value, "<p>([0-9]+)\\. ", "<p><b>$1</b>. ");
+
+                if (value.Contains("<b>2</b>. "))
+                {
+                    // Fix bolding number one for pre-text
+                    value = Regex.Replace(value, "<p>(.*[^>])1\\. ", "<p>$1<b>1</b>. ");
+                }
 
                 return value;
             }
@@ -117,22 +122,12 @@ namespace HawDict
             // Add abbreviation tags
             foreach (OutputAbbreviation abbreviation in OutputDict.Abbreviations)
             {
-                value = AddXdxfAbbreviationTags(value, abbreviation.Key, abbreviation.AbbreviationType == AbbreviationType.Grammatical);
+                value = AddXdxfAbbreviationTags(value, abbreviation.Key);
 
                 if (char.IsLower(abbreviation.Key[0]) && abbreviation.Key.Length > 1)
                 {
-                    value = AddXdxfAbbreviationTags(value, char.ToUpper(abbreviation.Key[0]) + abbreviation.Key.Substring(1), abbreviation.AbbreviationType == AbbreviationType.Grammatical);
+                    value = AddXdxfAbbreviationTags(value, char.ToUpper(abbreviation.Key[0]) + abbreviation.Key.Substring(1));
                 }
-            }
-
-            string grammar = "";
-
-            // Pull out grammar
-            if (value.StartsWith("<gr>"))
-            {
-                int grammarEndIndex = value.IndexOf("</gr>") + 5;
-                grammar = $"{value.Substring(0, grammarEndIndex)}";
-                value = value.Substring(grammarEndIndex + 1);
             }
 
             IEnumerable<string> definitions = GetDefinitions(value, keepDefinitionNumbers);
@@ -140,11 +135,11 @@ namespace HawDict
             if (definitions.Count() > 1)
             {
                 value = string.Join("</deftext></def><def><deftext>", definitions);
-                value = $"<def>{grammar}<def><deftext>{value}</deftext></def></def>";
+                value = $"<def><def><deftext>{value}</deftext></def></def>";
             }
             else
             {
-                value = $"<def>{grammar}<deftext>{value}</deftext></def>";
+                value = $"<def><deftext>{value}</deftext></def>";
             }
 
             return value;
@@ -152,24 +147,41 @@ namespace HawDict
 
         private static IEnumerable<string> GetDefinitions(string value, bool keepDefinitionNumbers, int num = 1)
         {
-            int nextFoundIndex = -1;
-
             string numStr = $"{num}. ";
             string nextNumStr = $" {num + 1}. ";
 
-            if (value.StartsWith(numStr) && (nextFoundIndex = value.IndexOf(nextNumStr)) > 0)
+            int foundIndex = value.IndexOf(numStr);
+            int nextFoundIndex = value.IndexOf(nextNumStr, foundIndex + 1);
+
+            bool preOneText = num == 1 && foundIndex > 0;
+
+            if (num == 1 && foundIndex > 0 && nextFoundIndex > 0)
             {
+                // Numbered definition with some pre-text
                 if (keepDefinitionNumbers)
                 {
                     yield return value.Substring(0, nextFoundIndex);
                 }
                 else
                 {
-                    yield return value.Substring(numStr.Length, nextFoundIndex - numStr.Length);
+                    yield return value[0..foundIndex] + value[(foundIndex + numStr.Length)..nextFoundIndex];
                 }
             }
-            else if (value.StartsWith(numStr))
+            else if (foundIndex == 0 && nextFoundIndex > 0)
             {
+                // Numbered definition without pre-text
+                if (keepDefinitionNumbers)
+                {
+                    yield return value[0..nextFoundIndex];
+                }
+                else
+                {
+                    yield return value[numStr.Length..nextFoundIndex];
+                }
+            }
+            else if (foundIndex == 0)
+            {
+                // Last numbered definition
                 if (keepDefinitionNumbers)
                 {
                     yield return value;
@@ -181,6 +193,7 @@ namespace HawDict
             }
             else
             {
+                // No numbers, just one definition
                 yield return value;
             }
 
@@ -193,7 +206,7 @@ namespace HawDict
             }
         }
 
-        private static string AddXdxfAbbreviationTags(string value, string abbreviation, bool grammar)
+        private static string AddXdxfAbbreviationTags(string value, string abbreviation)
         {
             value = value.Replace($" {abbreviation} ", $" <abbr>{abbreviation}</abbr> ");
             value = value.Replace($"({abbreviation} ", $"(<abbr>{abbreviation}</abbr> ");
@@ -214,14 +227,7 @@ namespace HawDict
 
             if (value.StartsWith(abbreviation + " "))
             {
-                if (grammar)
-                {
-                    value = $"<gr><abbr>{abbreviation}</abbr></gr>{value.Substring(abbreviation.Length)}";
-                }
-                else
-                {
-                    value = $"<abbr>{abbreviation}</abbr>{value.Substring(abbreviation.Length)}";
-                }
+                value = $"<abbr>{abbreviation}</abbr>{value.Substring(abbreviation.Length)}";
             }
 
             if (value.EndsWith(" " + abbreviation))

@@ -59,6 +59,8 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">&#699;&#257;pe&#699;,&#699;ape&#699;a</span>", "<span lang=\"HAW\">&#699;&#257;pe&#699;ape&#699;a</span>")
                 .Replace("<span lang=\"HAW\">kani&#257;,&#699;au</span>", "<span lang=\"HAW\">kani&#257;&#699;au</span>")
                 .Replace("<span lang=\"HAW\">ho&#699;on&#257;,aikola</span>", "<span lang=\"HAW\">ho&#699;on&#257;&#699;aikola</span>")
+                // Missing definition number fixes
+                .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
         }
 
