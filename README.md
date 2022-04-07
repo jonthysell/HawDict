@@ -69,8 +69,6 @@ Copyright (c) 1974 The University Press of Hawaii
 
 HawDict is open-source under the MIT license.
 
-HawDict relies on the [Html Agility Pack](https://github.com/zzzprojects/html-agility-pack/) for parsing the source data from [Ulukau](https://ulukau.org/).
-
-All source data (terms, definitions, etc) are copyright their respective copyright owners.
+HawDict does not include any copyrighted dictionary data - it is just a converter. HawDict uses the [Html Agility Pack](https://github.com/zzzprojects/html-agility-pack/) to download and parse the dictionary data from [Ulukau](https://ulukau.org/) at runtime. All dictionary data (terms, definitions, etc) is copyright their respective copyright owners.
 
 HawDict Copyright (c) 2018-2022 Jon Thysell
