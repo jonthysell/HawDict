@@ -153,8 +153,6 @@ namespace HawDict
             int foundIndex = value.IndexOf(numStr);
             int nextFoundIndex = value.IndexOf(nextNumStr, foundIndex + 1);
 
-            bool preOneText = num == 1 && foundIndex > 0;
-
             if (num == 1 && foundIndex > 0 && nextFoundIndex > 0)
             {
                 // Numbered definition with some pre-text

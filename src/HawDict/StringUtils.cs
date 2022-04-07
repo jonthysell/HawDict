@@ -115,9 +115,9 @@ namespace HawDict
             return s;
         }
 
-        private static Regex AcronymSplitterRegex = new Regex(@"(([a-zA-Z]\.){2,})([a-zA-ZāēīōūĀĒĪŌŪʻ][^\.])");
-        private static Regex ListSplitterRegex = new Regex(@"([^\(][a-zāēīōū])([,;:])(ʻ?[a-zA-ZāēīōūĀĒĪŌŪʻ][^\)])");
-        private static Regex SentenceSplitterRegex = new Regex(@"([a-zāēīōū])([\.\!\?])(ʻ?[A-ZĀĒĪŌŪ])");
+        private static readonly Regex AcronymSplitterRegex = new Regex(@"(([a-zA-Z]\.){2,})([a-zA-ZāēīōūĀĒĪŌŪʻ][^\.])", RegexOptions.Compiled);
+        private static readonly Regex ListSplitterRegex = new Regex(@"([^\(][a-zāēīōū])([,;:])(ʻ?[a-zA-ZāēīōūĀĒĪŌŪʻ][^\)])", RegexOptions.Compiled);
+        private static readonly Regex SentenceSplitterRegex = new Regex(@"([a-zāēīōū])([\.\!\?])(ʻ?[A-ZĀĒĪŌŪ])", RegexOptions.Compiled);
 
         public static string EscapeForXml(string s)
         {

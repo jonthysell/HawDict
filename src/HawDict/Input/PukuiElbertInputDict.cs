@@ -66,7 +66,7 @@ namespace HawDict
 
         protected override bool IsEntryNode(HtmlNode node)
         {
-            Regex regex = IsEntryDivId ?? (IsEntryDivId = new Regex(@"(ENG\.)?\w\.\d"));
+            Regex regex = IsEntryDivId ??= new Regex(@"(ENG\.)?\w\.\d");
 
             string id = node.Attributes["id"]?.DeEntitizeValue;
 

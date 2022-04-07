@@ -1,5 +1,10 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Updated to .NET 6.0
+* Updated to HtmlAgilityPack 1.11.42
+
 ## v0.13 ##
 
 * Improved MamakaKaiao source parsing and cleanup

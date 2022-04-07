@@ -98,21 +98,20 @@ namespace HawDict
         {
             string ifoFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.StarDict.ifo");
 
-            using (BinaryWriter ifoWriter = new BinaryWriter(new FileStream(ifoFile, FileMode.Create), Encoding.UTF8))
-            {
-                WriteLine(ifoWriter, "StarDict's dict ifo file");
-                WriteLine(ifoWriter, "version=2.4.2");
+            using BinaryWriter ifoWriter = new BinaryWriter(new FileStream(ifoFile, FileMode.Create), Encoding.UTF8);
 
-                WriteLine(ifoWriter, "bookname={0}", Title);
-                WriteLine(ifoWriter, "wordcount={0}", Articles.Count);
-                WriteLine(ifoWriter, "synwordcount={0}", synWordCount);
-                WriteLine(ifoWriter, "idxfilesize={0}", idxFileSize);
-                WriteLine(ifoWriter, "sametypesequence=h");
+            WriteLine(ifoWriter, "StarDict's dict ifo file");
+            WriteLine(ifoWriter, "version=2.4.2");
 
-                WriteLine(ifoWriter, "author={0}", string.Join(", ", Authors));
-                WriteLine(ifoWriter, "description={0}", Description);
-                WriteLine(ifoWriter, "date={0}", CreationDateTime.ToString("yyyy.MM.dd"));
-            }
+            WriteLine(ifoWriter, "bookname={0}", Title);
+            WriteLine(ifoWriter, "wordcount={0}", Articles.Count);
+            WriteLine(ifoWriter, "synwordcount={0}", synWordCount);
+            WriteLine(ifoWriter, "idxfilesize={0}", idxFileSize);
+            WriteLine(ifoWriter, "sametypesequence=h");
+
+            WriteLine(ifoWriter, "author={0}", string.Join(", ", Authors));
+            WriteLine(ifoWriter, "description={0}", Description);
+            WriteLine(ifoWriter, "date={0}", CreationDateTime.ToString("yyyy.MM.dd"));
         }
 
         private static void WriteLine(BinaryWriter bw, string line, params object[] args)

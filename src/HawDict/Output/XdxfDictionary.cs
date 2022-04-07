@@ -29,10 +29,9 @@ namespace HawDict
 
             string xdxfFile = Path.Combine(dictDir, $"{ID}.{TranslationType}.dict.xdxf");
 
-            using (FileStream fs = new FileStream(xdxfFile, FileMode.Create))
-            {
-                SaveDictFile(fs);
-            }
+            using FileStream fs = new FileStream(xdxfFile, FileMode.Create);
+
+            SaveDictFile(fs);
         }
 
         private void SaveDictFile(Stream output)
@@ -157,7 +156,7 @@ namespace HawDict
             }
         }
 
-        private void WriteElementStringIfNotNull(XmlWriter xw, string localName, string value)
+        private static void WriteElementStringIfNotNull(XmlWriter xw, string localName, string value)
         {
             if (!string.IsNullOrWhiteSpace(value))
             {

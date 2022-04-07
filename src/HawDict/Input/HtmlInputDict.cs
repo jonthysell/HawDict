@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,8 +24,6 @@ namespace HawDict
         {
             string htmlFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.html.tmp");
 
-            string html = "";
-
             if (File.Exists(htmlFile))
             {
                 Log("HTML file already exists.");
@@ -42,7 +40,7 @@ namespace HawDict
             }
 
             Log("Loading HTML file.");
-            html = File.ReadAllText(htmlFile, Encoding.UTF8);
+            string html = File.ReadAllText(htmlFile, Encoding.UTF8);
 
             Log("Cleaning HTML.");
             html = CleanSourceHtml(html);
@@ -55,18 +53,9 @@ namespace HawDict
 
         private async Task<string> GetRawHtmlFromSourceAsync()
         {
-            HttpWebRequest request = WebRequest.CreateHttp(SrcUrl);
+            var client = new HttpClient();
 
-            HttpWebResponse response = (HttpWebResponse)(await request.GetResponseAsync());
-
-            string html = "";
-
-            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-            {
-                html = await sr.ReadToEndAsync();
-            }
-
-            return html;
+            return await client.GetStringAsync(SrcUrl);
         }
 
         private IEnumerable<string[]> GetRawDataFromHtml(HtmlDocument doc)

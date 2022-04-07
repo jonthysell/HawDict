@@ -18,13 +18,11 @@ namespace HawDict
         {
             get
             {
-                string key = StringUtils.EscapeForXml(Key);
-
-                key = StringUtils.WrapInTag(Key, "abbr_k");
+                string key = StringUtils.WrapInTag(StringUtils.EscapeForXml(Key), "abbr_k");
 
                 if (char.IsLower(Key[0]) && Key.Length > 1)
                 {
-                    key += StringUtils.WrapInTag(char.ToUpper(Key[0]) + Key.Substring(1), "abbr_k");
+                    key += StringUtils.WrapInTag(StringUtils.EscapeForXml(char.ToUpper(Key[0]) + Key.Substring(1)), "abbr_k");
                 }
 
                 return key;
@@ -37,7 +35,7 @@ namespace HawDict
             {
                 string value = StringUtils.EscapeForXml(Value);
 
-                value = StringUtils.WrapInTag(Value, "abbr_v");
+                value = StringUtils.WrapInTag(value, "abbr_v");
 
                 return value;
             }
