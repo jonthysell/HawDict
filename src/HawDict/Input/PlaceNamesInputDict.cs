@@ -73,7 +73,9 @@ namespace HawDict
 
         protected override string FinalCleanValue(string value)
         {
-            return StringUtils.FixSentenceSpacing(value.TrimStart('.').TrimStart());
+            value = value.TrimStart('.').TrimStart();
+            value = StringUtils.FixSentenceEnd(value);
+            return StringUtils.FixSentenceSpacing(value);
         }
 
         protected override void AddAbbreviations(OutputDictBase dict)

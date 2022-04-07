@@ -80,6 +80,7 @@ namespace HawDict
 
         protected override string FinalCleanValue(string value)
         {
+            value = StringUtils.FixSentenceEnd(value);
             return StringUtils.FixSentenceSpacing(value);
         }
 

@@ -115,6 +115,28 @@ namespace HawDict
             return s;
         }
 
+        public static string FixSentenceEnd(string s)
+        {
+            switch (s[^1])
+            {
+                case '!':
+                case '?':
+                case '.':
+                case ')':
+                case ']':
+                case '"':
+                case '…':
+                    break;
+                case ',':
+                    s = s.TrimEnd(',') + ".";
+                    break;
+                default:
+                    s += ".";
+                    break;
+            }
+            return s;
+        }
+
         private static readonly Regex AcronymSplitterRegex = new Regex(@"(([a-zA-Z]\.){2,})([a-zA-ZāēīōūĀĒĪŌŪʻ][^\.])", RegexOptions.Compiled);
         private static readonly Regex ListSplitterRegex = new Regex(@"([^\(][a-zāēīōū])([,;:])(ʻ?[a-zA-ZāēīōūĀĒĪŌŪʻ][^\)])", RegexOptions.Compiled);
         private static readonly Regex SentenceSplitterRegex = new Regex(@"([a-zāēīōū])([\.\!\?])(ʻ?[A-ZĀĒĪŌŪ])", RegexOptions.Compiled);

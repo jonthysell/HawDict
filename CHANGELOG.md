@@ -4,6 +4,9 @@
 
 * Updated to .NET 6.0
 * Updated to HtmlAgilityPack 1.11.42
+* Improved PlaceNames source parsing and cleanup
+* Improved PlaceNames source parsing and cleanup
+* Improved PukuiElbert source parsing and cleanup
 
 ## v0.13 ##
 
