@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.14 ##
 
 * Updated to .NET 6.0
 * Updated to HtmlAgilityPack 1.11.42
