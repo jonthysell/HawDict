@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.15.0 ##
 
 * Updated MamakaKaiao source URL and parsing
 * Updated PlaceNames source URL
