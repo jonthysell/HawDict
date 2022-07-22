@@ -24,7 +24,7 @@ namespace HawDict
 
         public List<string> Authors { get; private set; } = new List<string>();
 
-        public string FileVersion => AppInfo.Version;
+        public static string FileVersion => AppInfo.Version;
 
         #endregion
 

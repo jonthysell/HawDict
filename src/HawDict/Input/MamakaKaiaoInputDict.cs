@@ -12,7 +12,7 @@ namespace HawDict
     {
         public override string RawSourceFileName => $"{ID}.html.tmp";
 
-        private static object _tempFileLock = new object();
+        private static readonly object _tempFileLock = new object();
 
         public MamakaKaiaoInputDict(TranslationType translationType, LogLine logLine) : base("MamakaKaiao", translationType, logLine)
         {
@@ -35,10 +35,10 @@ namespace HawDict
             }
         }
 
-        private static string HawToEngStart = "<h1 align=\"center\">M&#257;hele &#699;&#332;lelo Hawai&#699;i<br>\n<i>Hawaiian-English</i></h1>";
-        private static string EngToHawStart = "<h1 align=\"center\"> M&#257;hele &#699;&#332;lelo Pelek&#257;nia<br><i> English-Hawaiian</i></h1>";
-        private static string ErrataStart = "<h3 align=\"center\"> Hale Kuamo'o</h3>";
-        private static string ErrataEnd = "<h1 align=\"center\">&#699;Aha P&#363;nana Leo</h1>";
+        private static readonly string HawToEngStart = "<h1 align=\"center\">M&#257;hele &#699;&#332;lelo Hawai&#699;i<br>\n<i>Hawaiian-English</i></h1>";
+        private static readonly string EngToHawStart = "<h1 align=\"center\"> M&#257;hele &#699;&#332;lelo Pelek&#257;nia<br><i> English-Hawaiian</i></h1>";
+        private static readonly string ErrataStart = "<h3 align=\"center\"> Hale Kuamo'o</h3>";
+        private static readonly string ErrataEnd = "<h1 align=\"center\">&#699;Aha P&#363;nana Leo</h1>";
 
         protected override string CleanSourceHtml(string s)
         {
