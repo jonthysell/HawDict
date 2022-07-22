@@ -10,6 +10,10 @@ namespace HawDict
 {
     public class MamakaKaiaoInputDict : HtmlInputDict
     {
+        public override string RawSourceFileName => $"{ID}.html.tmp";
+
+        private static object _tempFileLock = new object();
+
         public MamakaKaiaoInputDict(TranslationType translationType, LogLine logLine) : base("MamakaKaiao", translationType, logLine)
         {
             ShortTitle = $"Māmaka Kaiao ({(TranslationType == TranslationType.HawToEng ? "HAW-ENG" : "ENG-HAW")})";
@@ -18,22 +22,42 @@ namespace HawDict
 
             Authors.AddRange(new string[] { "Kōmike Huaʻōlelo", "Hale Kuamoʻo", "ʻAha Pūnana Leo" });
 
-            switch (TranslationType)
-            {
-                case TranslationType.HawToEng:
-                    SrcUrl = "http://www.ulukau.org/elib/cgi-bin/library?e=d-0mkd-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3&toc=0";
-                    break;
-                case TranslationType.EngToHaw:
-                    SrcUrl = "http://www.ulukau.org/elib/cgi-bin/library?e=d-0mkd-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.4&toc=0";
-                    break;
-            }
+            SrcUrl = "https://web.archive.org/web/20201127014517/http://www.ulukau.org/elib/cgi-bin/library?e=d-0mkd-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0&toc=0";
 
             EntryHtmlTag = "p";
         }
 
+        protected override void GetRawDataFromSource()
+        {
+            lock (_tempFileLock)
+            {
+                base.GetRawDataFromSource();
+            }
+        }
+
+        private static string HawToEngStart = "<h1 align=\"center\">M&#257;hele &#699;&#332;lelo Hawai&#699;i<br>\n<i>Hawaiian-English</i></h1>";
+        private static string EngToHawStart = "<h1 align=\"center\"> M&#257;hele &#699;&#332;lelo Pelek&#257;nia<br><i> English-Hawaiian</i></h1>";
+        private static string ErrataStart = "<h3 align=\"center\"> Hale Kuamo'o</h3>";
+        private static string ErrataEnd = "<h1 align=\"center\">&#699;Aha P&#363;nana Leo</h1>";
+
         protected override string CleanSourceHtml(string s)
         {
-            s = Regex.Replace(s, "<h1 align=\\\"center\\\">I<\\/h1>.*<h1 align=\\\"center\\\">I<\\/h1>", @"<h1 align=""center"">I</h1>", RegexOptions.Singleline); // Remove doubled I-section in EngToHaw
+            // Remove doubled I-section in EngToHaw
+            s = Regex.Replace(s, "<h1 align=\\\"center\\\">I<\\/h1>.*<h1 align=\\\" center\\\">I<\\/h1>", @"<h1 align=""center"">I</h1>", RegexOptions.Singleline);
+
+            // Remove problematic errata section
+            s = Regex.Replace(s, $"{ErrataStart}.*{ErrataEnd}", $"{ErrataStart}\n{ErrataEnd}", RegexOptions.Singleline);
+
+            // Remove entries for wrong direction
+            switch (TranslationType)
+            {
+                case TranslationType.HawToEng:
+                    s = Regex.Replace(s, $"{EngToHawStart}.*{ErrataStart}", ErrataStart, RegexOptions.Singleline);
+                    break;
+                case TranslationType.EngToHaw:
+                    s = Regex.Replace(s, $"{HawToEngStart}.*{EngToHawStart}", EngToHawStart, RegexOptions.Singleline);
+                    break;
+            }
 
             s = s
                 .Replace("spanclass", "span class")
@@ -42,23 +66,26 @@ namespace HawDict
                 .Replace("</p>\n\n\n \n\n\n <p align=\"Justify\">\n", " ")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"justify\"><i>", " <i>")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"Justify\"><i>", " <i>")
+                .Replace("<p align=\"“Justify”\">", "<p align=\"Justify\">")
                 .Replace("</i>\n</p>\n\n\n \n\n <p><i>", " ")
                 .Replace("</p>\n\n\n \n\n\n <p>", " ")
                 .Replace("</i></span>", "</span>")
                 .Replace("<SPAN CLASS=\"HEAD\">", "<span class=\"head\">")
                 .Replace("</SPAN>", "</span>")
+                .Replace("align=\" justify\"", "align=\"justify\"")
                 .Replace("\n</p>\n <p align=\"justify\"><span class=\"head\"></i>", "</i></p>\n <p align=\"justify\"><span class=\"head\">")
                 .Replace("\n</p>\n</i> <p align=\"justify\"><span class=\"head\">", "\n</i></p>\n <p align=\"justify\"><span class=\"head\">")
                 .Replace("decade Kekeke.</span></p>", "decade</span> Kekeke.</p>")
                 .Replace("</span ", "</span>")
                 .Replace("<span class=\"head>", "<span class=\"head\">")
                 .Replace("<span class=\"head\'>", "<span class=\"head\">")
-                .Replace("&#43:", "&#43;").Replace("&#43 ", "&#43;").Replace("&#34 ", "&#43; ").Replace("&$ ", " &#43; ")
+                .Replace("<span class=\"“head”\">", "<span class=\"head\">")
+                .Replace("&#43;:", "&#43;").Replace("&#34; ", "&#43; ").Replace("&amp;$ ", " &#43; ")
                 .Replace("&#183m", "&#183;m").Replace("&tilde,", "&tilde;,").Replace("&#233r", "&#233;r").Replace("&#0116l", "&#x016B;l").Replace("&#014D;", "&#x014D;")
                 .Replace("</span> renal vein", "renal vein</span>")
                 .Replace("<p> l&#257;", "\n</p>\n <p align=\"justify\"><span class=\"head\">l&#257;</span>")
                 .Replace("</p>\n\n\n \n\n\n <p align=\"justify\">laws.", " laws.")
-                .Replace("<i.handle", " <i>handle").Replace("period.>", " period.").Replace("uila.<?p>", "uila.</p>")
+                .Replace("<i.handle.< i>", "<i>handle.</i>").Replace("period.&gt;", " period.").Replace("uila.<?p>", "uila.</p>")
                 .Replace("<sub>0</sub>", "&#x2080;").Replace("<SUB>1</SUB>", "&#x2081;").Replace("<SUB>2</SUB>", "&#x2082;").Replace("<sub>1</sub>", "&#x2081;").Replace("<sub>2</sub>", "&#x2082;")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("</p>\n <p align=\"justify\"><span class=\"head\">&#256;.</span>", " &#256;.")
@@ -68,6 +95,7 @@ namespace HawDict
                 .Replace("<span class=\"head\">Au  Pala&#699;o  K&#363;.hou</span>", "<span class=\"head\">Au  Pala&#699;o  K&#363;&#183;hou</span>")
                 .Replace("<span class=\"head\">Au  Pala&#699;o</span> K&#363; kahiko ", "<span class=\"head\">Au  Pala&#699;o K&#363;&#183;kahiko</span> ")
                 .Replace("<span class=\"head\">Au Pala&#699;o K&#363;.waena</span>", "<span class=\"head\">Au Pala&#699;o K&#363;&#183;waena</span>")
+                .Replace("i&#699;a puna&#183;kea</span>", "<p align=\"justify\"><span class=\"head\">i&#699;a puna&#183;kea</span>")
                 .Replace("<span class=\"head\">k&#299;.like&#183;like</span>", "<span class=\"head\">k&#299;&#183;like&#183;like</span>")
                 .Replace("Ho&#699;ok?pa&#699;i pukaaniani", "Ho&#699;ok&#363;pa&#699;i pukaaniani")
                 .Replace("<i>Lit.,</i> cutting line.<br>\nchange should be made from the original, in proofreading; stet. <i>Lit.,</i> mark (for) leaving (as is).", "<i>Lit.,</i> cutting line.")
@@ -80,13 +108,18 @@ namespace HawDict
                 .Replace("&#699;I;&#699;o wiliwili", "&#699;I&#699;o wiliwili")
                 .Replace("k&#363;;kaelio", "k&#363;kaelio")
                 .Replace("Organ</i></p>", "Organ</i> ")
+                .Replace("<span class=\"head\">iliac</span> vein", "<span class=\"head\">iliac vein</span>")
+                .Replace("<span class=\"head\">Ohta-san &#699;ukulele &#699;</span>Ukulele Ohta-san.", "<span class=\"head\">Ohta-san &#699;ukulele</span> &#699;Ukulele Ohta-san.")
+                .Replace("K&#0116;lana.", "K&#363;lana.")
                 .Replace("race <i>", "race</span> <i>")
+                .Replace(">railing Ballustrade. </span>", ">railing</span> <i>Ballustrade</i>.")
                 .Replace("reasonable K", "reasonable</span> K")
                 .Replace("reasoning</span>.", "reasoning</span>")
                 .Replace("receive <i>", "receive</span> <i>")
                 .Replace("region <i>", "region</span> <i>")
                 .Replace("renal artery A", "renal artery</span> A")
                 .Replace("republic</sapn> <i>", "republic</span> <i>")
+                .Replace("K&#363;h&amp;#014D;&#699;ailona.", "K&#363;h&#333;&#699;ailona.")
                 .Replace("<i>To</i> &tilde; <i>smooth; also smooth</i> &tilde;<i>er;glib</i>", "<i>To &tilde; smooth; also smooth &tilde;er; glib</i>")
                 .Replace("&tilde;  ejecta.", "&tilde; ejecta. ")
                 .Replace("waena.</i>\nloa &#699;a&#699; ", "waena.</i></p>\n<p align=\"justify\"><span class=\"head\">loa</span> <i>&#699;a&#699;</i> ")

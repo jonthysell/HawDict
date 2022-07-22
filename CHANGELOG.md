@@ -2,6 +2,7 @@
 
 ## next ##
 
+* Updated MamakaKaiao source URL and parsing
 * Updated PlaceNames source URL
 * Updated PukuiElbert source URL and parsing
 

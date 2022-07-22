@@ -18,11 +18,13 @@ namespace HawDict
 
         private List<KeyValuePair<string, string>> _cleanedEntries = null;
 
+        public virtual string RawSourceFileName => $"{ID}.{TranslationType}.html.tmp";
+
         public HtmlInputDict(string id, TranslationType translationType, LogLine logLine) : base(id, translationType, logLine) { }
 
         protected override void GetRawDataFromSource()
         {
-            string htmlFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.html.tmp");
+            string htmlFile = Path.Combine(DictDir, RawSourceFileName);
 
             if (File.Exists(htmlFile))
             {
