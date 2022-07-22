@@ -36,7 +36,7 @@ try
 {
     [xml]$DirectoryBuildProps = Get-Content $DirectoryBuildPropsFile
 
-    $CurrentVersion = $DirectoryBuildProps.Project.PropertyGroup.Version
+    [string]$CurrentVersion = ([string]$DirectoryBuildProps.Project.PropertyGroup.Version).Trim()
 
     Write-Host "Current version: $CurrentVersion"
 
@@ -50,13 +50,13 @@ try
     Write-Host "Updating $ChangelogFile with new version..."
     (Get-Content $ChangelogFile).Replace("## next ##", "## v$NewVersion ##") | Set-Content $ChangelogFile
 
-    Write-Host "Creating release commit..."
-    &git commit -a -m "Version v$NewVersion release"
-
-    Write-Host "Tagging release commit..."
-    &git tag v$NewVersion
-
     if (!$Test) {
+        Write-Host "Creating release commit..."
+        &git commit -a -m "Version v$NewVersion release"
+
+        Write-Host "Tagging release commit..."
+        &git tag v$NewVersion
+    
         Write-Host "Pushing release commit..."
         &git push
 
