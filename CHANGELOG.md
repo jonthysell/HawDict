@@ -2,13 +2,14 @@
 
 ## next ##
 
+* Updated PlaceNames source URL
 * Updated PukuiElbert source URL and parsing
 
 ## v0.14 ##
 
 * Updated to .NET 6.0
 * Updated to HtmlAgilityPack 1.11.42
-* Improved PlaceNames source parsing and cleanup
+* Improved MamakaKaiao source parsing and cleanup
 * Improved PlaceNames source parsing and cleanup
 * Improved PukuiElbert source parsing and cleanup
 

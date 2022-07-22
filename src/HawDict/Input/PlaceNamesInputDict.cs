@@ -18,7 +18,7 @@ namespace HawDict
 
             Authors.AddRange(new string[] { "Mary Kawena Pūkuʻi", "Samuel H. Elbert", "Esther T. Moʻokini" });
 
-            SrcUrl = "http://www.ulukau.org/elib/cgi-bin/library?e=d-0pepn-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3&toc=0";
+            SrcUrl = "https://web.archive.org/web/20210421194928/http://ulukau.org/elib/cgi-bin/library?e=d-0pepn-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0&toc=0";
 
             EntryHtmlTag = "p";
         }
