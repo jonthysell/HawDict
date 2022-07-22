@@ -23,10 +23,10 @@ namespace HawDict
             switch (TranslationType)
             {
                 case TranslationType.HawToEng:
-                    SrcUrl = "http://www.ulukau.org/elib/cgi-bin/library?e=d-0ped-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3&toc=0";
+                    SrcUrl = "https://web.archive.org/web/20191218162453/http://ulukau.org/elib/cgi-bin/library?e=d-0ped-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3&toc=0";
                     break;
                 case TranslationType.EngToHaw:
-                    SrcUrl = "http://www.ulukau.org/elib/cgi-bin/library?e=d-0ped-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.4&toc=0";
+                    SrcUrl = "https://web.archive.org/web/20191218162453/http://ulukau.org/elib/cgi-bin/library?e=d-0ped-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.4&toc=0";
                     break;
             }
 
@@ -38,11 +38,11 @@ namespace HawDict
             return s
                 .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
                 .Replace("</td></tr></table><p>&nbsp;</p>\n<p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
-                .Replace("&4 ", "Redup. ").Replace("&;n", "n.").Replace("&(PCP; ", "(PCP ").Replace("(Mele ", "(Mele. ")
+                .Replace("&amp;4 ", "Redup. ").Replace("&amp;;n", "n.").Replace("&amp;(PCP; ", "(PCP ").Replace("(Mele ", "(Mele. ")
                 .Replace("<span lang=\"HAW\">N&#257;n&#257;</span> 3", "<span>N&#257;n&#257;.</span> 3").Replace("N&#257;n&#257; 2", "N&#257;n&#257;. 2").Replace("N&#257;n&#257; 1", "N&#257;n&#257;. 1")
                 .Replace("..", ".").Replace(".</span>.", ".</span>").Replace(".</em>.", ".</em>")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
-                .Replace("T.44>", "")
+                .Replace("T.44&gt;", "")
                 .Replace("h3", "span")
                 // Typo fixes:
                 .Replace("nuts containing while,", "nuts containing white,")
@@ -59,6 +59,7 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">&#699;&#257;pe&#699;,&#699;ape&#699;a</span>", "<span lang=\"HAW\">&#699;&#257;pe&#699;ape&#699;a</span>")
                 .Replace("<span lang=\"HAW\">kani&#257;,&#699;au</span>", "<span lang=\"HAW\">kani&#257;&#699;au</span>")
                 .Replace("<span lang=\"HAW\">ho&#699;on&#257;,aikola</span>", "<span lang=\"HAW\">ho&#699;on&#257;&#699;aikola</span>")
+                .Replace("<span lang=\"HAW\">ho&#699;o.lako</span> To insinuate", "<span lang=\"HAW\">ho&#699;o.loko</span> To insinuate")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;

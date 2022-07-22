@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Updated PukuiElbert source URL and parsing
+
 ## v0.14 ##
 
 * Updated to .NET 6.0
