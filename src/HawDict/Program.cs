@@ -24,7 +24,7 @@ namespace HawDict
 
             Console.WriteLine("{0} v{1}", AppInfo.Name, AppInfo.Version);
 
-            string rootDir = (null != args && args.Length > 0) ? args[0] : Environment.CurrentDirectory;
+            string rootDir = (args is not null && args.Length > 0) ? args[0] : Environment.CurrentDirectory;
 
             try
             {
@@ -89,7 +89,7 @@ namespace HawDict
 
             Console.ForegroundColor = oldColor;
 
-            if (null != ex.InnerException)
+            if (ex.InnerException is not null)
             {
                 PrintException(ex.InnerException);
             }

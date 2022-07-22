@@ -50,7 +50,7 @@ namespace HawDict
         {
             get
             {
-                if (null == _starDictKeySynonyms)
+                if (_starDictKeySynonyms is null)
                 {
                     _starDictKeySynonyms = new HashSet<string>
                     {

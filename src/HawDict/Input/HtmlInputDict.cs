@@ -72,7 +72,7 @@ namespace HawDict
 
         protected override IEnumerable<KeyValuePair<string, string>> GetCleanEntries()
         {
-            if (null == _cleanedEntries)
+            if (_cleanedEntries is null)
             {
                 CleanRawEntries();
             }
