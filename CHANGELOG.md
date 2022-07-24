@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Added filter to remove duplicate entries
+
 ## v0.15.0 ##
 
 * Updated MamakaKaiao source URL and parsing

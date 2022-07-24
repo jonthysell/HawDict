@@ -86,6 +86,8 @@ namespace HawDict
         {
             _cleanedEntries = new List<KeyValuePair<string, string>>();
 
+            var set = new HashSet<KeyValuePair<string, string>>();
+
             foreach (string[] entry in _rawData)
             {
                 string key = StringUtils.NormalizeWhiteSpace(StringUtils.HtmlToUtf8(entry[0]));
@@ -94,8 +96,10 @@ namespace HawDict
                 key = FinalCleanKey(key);
                 value = FinalCleanValue(value);
 
-                _cleanedEntries.Add(new KeyValuePair<string, string>(key, value));
+                set.Add(new KeyValuePair<string, string>(key, value));
             }
+
+            _cleanedEntries = set.ToList();
         }
 
         protected abstract string CleanSourceHtml(string html);
