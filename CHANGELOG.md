@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.16.0 ##
 
 * Added filter to remove duplicate entries
 
