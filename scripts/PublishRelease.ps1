@@ -1,5 +1,5 @@
 param(
-    [string]$BumpPart = "patch",
+    [string]$BumpPart = "minor",
     [string]$DirectoryBuildPropsFile = "src\Directory.Build.props",
     [string]$ChangelogFile = ".\CHANGELOG.md",
     [boolean]$Test = $False
