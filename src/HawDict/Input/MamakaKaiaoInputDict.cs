@@ -135,7 +135,9 @@ namespace HawDict
                 .Replace(".&#699;", ". &#699;").Replace(".</i>&#699;", ".</i> &#699;").Replace("&#699; ", "&#699;")
                 .Replace(".<i>", ". <i>").Replace(",<i>", ", <i>")
                 .Replace("&tilde;.", "&tilde;. ").Replace(".&tilde;", ". &tilde;")
-                .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>");
+                .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>")
+                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
+                ;
 
             string[] split = s.Split('\n');
 

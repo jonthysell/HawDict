@@ -40,7 +40,9 @@ namespace HawDict
                 .Replace("Honolu.u.", "Honolulu.")
                 .Replace("lawanui</span>\n", "lawanui</span>")
                 .Replace("mythical.bird", "mythical bird")
-                .Replace("<?>", ";");
+                .Replace("<?>", ";")
+                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
+                ;
 
             return s;
         }

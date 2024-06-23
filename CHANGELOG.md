@@ -2,6 +2,8 @@
 
 ## next ##
 
+* Updated MamakaKaiao parsing
+* Updated PlaceNames parsing
 * Updated PukuiElbert parsing
 
 ## v0.16.0 ##

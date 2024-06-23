@@ -69,6 +69,7 @@ namespace HawDict
                 .Replace("<span lang=\"ENG\">I&#699;ll ", "<span lang=\"ENG\">I'll ")
                 .Replace("sunlight. (PPN <span lang=\"HAW\">&#699;la&#699;aa</span>.)", "sunlight. (PPN <span lang=\"HAW\">la&#699;aa</span>.)")
                 .Replace("<span lang=\"HAW\">ho&#699;o.li&#699;o&#699;li&#699;o</span>", "<span lang=\"HAW\">ho&#699;o.li&#699;o.li&#699;o</span>")
+                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
