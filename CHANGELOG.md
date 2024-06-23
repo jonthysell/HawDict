@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Updated PukuiElbert parsing
+
 ## v0.16.0 ##
 
 * Added filter to remove duplicate entries
