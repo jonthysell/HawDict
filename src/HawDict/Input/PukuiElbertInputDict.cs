@@ -60,6 +60,15 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">kani&#257;,&#699;au</span>", "<span lang=\"HAW\">kani&#257;&#699;au</span>")
                 .Replace("<span lang=\"HAW\">ho&#699;on&#257;,aikola</span>", "<span lang=\"HAW\">ho&#699;on&#257;&#699;aikola</span>")
                 .Replace("<span lang=\"HAW\">ho&#699;o.lako</span> To insinuate", "<span lang=\"HAW\">ho&#699;o.loko</span> To insinuate")
+                .Replace("<span lang=\"HAW\">&#699;&#257;l&#699;a</span>", "<span lang=\"HAW\">&#699;&#257;la&#699;a</span>")
+                .Replace("<span lang=\"HAW\">l&#699;opihi kapu.a&#699;i lio </span>", "<span lang=\"HAW\">&#699;opihi kapu.a&#699;i lio </span>")
+                .Replace("<span lang=\"HAW\">Pulo (Buro) Ho&#699;o.laha l&#699;a </span>", "<span lang=\"HAW\">Pulo (Buro) Ho&#699;o.laha I&#699;a </span>")
+                .Replace("<span lang=\"HAW\">No k&#275;ia ma&#699;a o ke ail&#699;i</span>", "<span lang=\"HAW\">No k&#275;ia ma&#699;a o ke ali&#699;i</span>")
+                .Replace("<span lang=\"HAW\">&#699;e&#699;lek&#363;</span>", "<span lang=\"HAW\">&#699;e&#699;elek&#363;</span>")
+                .Replace("<span lang=\"HAW\">&#699;a&#699;ahu ali&#699;l</span>", "<span lang=\"HAW\">&#699;a&#699;ahu ali&#699;i</span>")
+                .Replace("<span lang=\"ENG\">I&#699;ll ", "<span lang=\"ENG\">I'll ")
+                .Replace("sunlight. (PPN <span lang=\"HAW\">&#699;la&#699;aa</span>.)", "sunlight. (PPN <span lang=\"HAW\">la&#699;aa</span>.)")
+                .Replace("<span lang=\"HAW\">ho&#699;o.li&#699;o&#699;li&#699;o</span>", "<span lang=\"HAW\">ho&#699;o.li&#699;o.li&#699;o</span>")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
