@@ -73,7 +73,8 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">pahele<span>nvt.</span> </span>", "<span lang=\"HAW\">pahele</span>").Replace("<p><span>1.</span>  A snare, noose, trap;", "<p><span>1.</span> <span>nvt.</span> A snare, noose, trap;")
                 .Replace("sunlight. (PPN <span lang=\"HAW\">&#699;la&#699;aa</span>.)", "sunlight. (PPN <span lang=\"HAW\">la&#699;aa</span>.)")
                 .Replace("<span lang=\"HAW\">ho&#699;o.li&#699;o&#699;li&#699;o</span>", "<span lang=\"HAW\">ho&#699;o.li&#699;o.li&#699;o</span>")
-                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
+                .Replace("&ldquo;k&#257;nalua.rd;", "&ldquo;k&#257;nalua.&rdquo;").Replace("kona &#699;doia&#699;i&#699;o</span>", "kona &#699;oia&#699;i&#699;o</span>")
+                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't").Replace("I&#699;m", "I'm").Replace("you&#699;d", "you'd")
                 .Replace("P.M. </span>", "P.M.</span>").Replace("O.K. </span>", "O.K.</span>").Replace(". </span>", " </span>")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")

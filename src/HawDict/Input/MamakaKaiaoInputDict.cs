@@ -151,7 +151,7 @@ namespace HawDict
                 .Replace(".<i>", ". <i>").Replace(",<i>", ", <i>")
                 .Replace("&tilde;.", "&tilde;. ").Replace(".&tilde;", ". &tilde;")
                 .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>")
-                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
+                .Replace("&#699;s", "'s").Replace("n&#699;t", "n't").Replace("I&#699;m", "I'm")
                 .Replace("</span>.   Abbreviation for", ".</span> Abbreviation for").Replace("</span>.  Abbreviation for", ".</span> Abbreviation for").Replace("</span>. Abbreviation for", ".</span> Abbreviation for")
                 ;
 
