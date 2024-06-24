@@ -67,9 +67,14 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">&#699;e&#699;lek&#363;</span>", "<span lang=\"HAW\">&#699;e&#699;elek&#363;</span>")
                 .Replace("<span lang=\"HAW\">&#699;a&#699;ahu ali&#699;l</span>", "<span lang=\"HAW\">&#699;a&#699;ahu ali&#699;i</span>")
                 .Replace("<span lang=\"ENG\">I&#699;ll ", "<span lang=\"ENG\">I'll ")
+                .Replace("<span lang=\"HAW\">ilo<span>nvi.</span> </span>", "<span lang=\"HAW\">ilo</span>").Replace("<p><span>1.</span> Maggot,", "<p><span>1.</span> <span>nvi.</span> Maggot,")
+                .Replace("<span lang=\"HAW\">p&#257; hao<span>n.</span> </span>", "<span lang=\"HAW\">p&#257; hao</span>").Replace("<p><span>1.</span>  Iron fence.</p>", "<p><span>1.</span> <span>n.</span> Iron fence.</p>")
+                .Replace("<span lang=\"HAW\">p&#257; hau<span>n.</span> </span>", "<span lang=\"HAW\">p&#257; hau</span>").Replace("<p><span>1.</span> Enclosure or fence of <span lang=\"HAW\">hau</span> trees.</p>", "<p><span>1.</span> <span>n.</span> Enclosure or fence of <span lang=\"HAW\">hau</span> trees.</p>")
+                .Replace("<span lang=\"HAW\">pahele<span>nvt.</span> </span>", "<span lang=\"HAW\">pahele</span>").Replace("<p><span>1.</span>  A snare, noose, trap;", "<p><span>1.</span> <span>nvt.</span> A snare, noose, trap;")
                 .Replace("sunlight. (PPN <span lang=\"HAW\">&#699;la&#699;aa</span>.)", "sunlight. (PPN <span lang=\"HAW\">la&#699;aa</span>.)")
                 .Replace("<span lang=\"HAW\">ho&#699;o.li&#699;o&#699;li&#699;o</span>", "<span lang=\"HAW\">ho&#699;o.li&#699;o.li&#699;o</span>")
                 .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
+                .Replace("P.M. </span>", "P.M.</span>").Replace("O.K. </span>", "O.K.</span>").Replace(". </span>", " </span>")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
