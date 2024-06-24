@@ -41,6 +41,9 @@ namespace HawDict
                 .Replace("lawanui</span>\n", "lawanui</span>")
                 .Replace("mythical.bird", "mythical bird")
                 .Replace("<?>", ";")
+                .Replace("lodged on a ledge known as &#699;lole-ka&#699;a.)</p>", "lodged on a ledge known as &#699;Iole-ka&#699;a.)</p>")
+                .Replace("<span>*&#699;Kuinihu</span>. Cone", "<span>*Kuinihu</span>. Cone")
+                .Replace("in 1871 and renamed &#699;lo-lani.", "in 1871 and renamed &#699;Io-lani.")
                 .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
                 ;
 
