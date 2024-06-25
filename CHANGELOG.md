@@ -8,11 +8,11 @@
 
 ## v0.16.0 ##
 
-* Added filter to remove duplicate entries
+* Added filter to remove duplicate entries (1 fixed term)
 
 ## v0.15.0 ##
 
-* Updated MamakaKaiao source URL and parsing
+* Updated MamakaKaiao source URL and parsing (21 fixed terms)
 * Updated PlaceNames source URL
 * Updated PukuiElbert source URL and parsing
 
@@ -20,15 +20,15 @@
 
 * Updated to .NET 6.0
 * Updated to HtmlAgilityPack 1.11.42
-* Improved MamakaKaiao source parsing and cleanup
-* Improved PlaceNames source parsing and cleanup
-* Improved PukuiElbert source parsing and cleanup
+* Improved MamakaKaiao source parsing and cleanup (38 fixed terms)
+* Improved PlaceNames source parsing and cleanup (2 fixed terms)
+* Improved PukuiElbert source parsing and cleanup (101 fixed terms)
 
 ## v0.13 ##
 
-* Improved MamakaKaiao source parsing and cleanup
-* Improved PlaceNames source parsing and cleanup
-* Improved PukuiElbert source parsing and cleanup
+* Improved MamakaKaiao source parsing and cleanup (305 fixed terms)
+* Improved PlaceNames source parsing and cleanup (41 fixed terms)
+* Improved PukuiElbert source parsing and cleanup (65 fixed terms)
 * New HawDict.Test test library with StringUtils tests
 * Process dictionaries in parallel to speed up result
 * Removed <gr> tags from XDXF output files
@@ -36,12 +36,12 @@
 
 ## v0.12 ##
 
-* Fixed PukuiElbert source parsing of page breaks
-* Fixed MamakaKaiao source parsing of page breaks
+* Fixed PukuiElbert source parsing of page breaks (231 fixed terms)
+* Fixed MamakaKaiao source parsing of page breaks (5 fixed terms)
 
 ## v0.11 ##
 
-* Fixed PlaceNames source parsing
+* Fixed PlaceNames source parsing (94 fixed terms)
 
 ## v0.10 ##
 
