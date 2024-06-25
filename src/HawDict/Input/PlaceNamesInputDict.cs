@@ -46,6 +46,11 @@ namespace HawDict
                 .Replace("<span>*&#699;Kuinihu</span>. Cone", "<span>*Kuinihu</span>. Cone")
                 .Replace("in 1871 and renamed &#699;lo-lani.", "in 1871 and renamed &#699;Io-lani.")
                 .Replace("&#699;s", "'s").Replace("n&#699;t", "n't")
+                .Replace("sandvicensis</i>(a fish).", "sandvicensis</i> (a fish).")
+                .Replace("Ka-welo(Ka-welo", "Ka-welo (Ka-welo")
+                .Replace("Peak(2", "Peak (2")
+                .Replace("daintily(a poetic", "daintily (a poetic")
+                .Replace("Smith( 1802-1891)", "Smith (1802-1891)")
                 ;
 
             return s;

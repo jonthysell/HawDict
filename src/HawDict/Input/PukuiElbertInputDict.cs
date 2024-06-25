@@ -84,6 +84,9 @@ namespace HawDict
                 .Replace("<span>Cf.</span> &#699;nina, <span lang=\"HAW\">pap&#257;lina</span>, &#699;ulika, &#699;ulina.</p>", "<span>Cf.</span> nina, <span lang=\"HAW\">pap&#257;lina</span>, &#699;&#363;lika, &#699;&#363;lina.</p>")
                 .Replace("<span lang=\"HAW\">He k&#257;naenae aloha n&#699;au i&#257;&#699;oe,", "<span lang=\"HAW\">He k&#257;naenae aloha na&#699;u i&#257;&#699;oe,")
                 .Replace("PPN<span", "PPN <span")
+                .Replace("</span>(as on a horse).", "</span> (as on a horse).")
+                .Replace("kani</span>(bell).", "kani</span> (bell).")
+                .Replace("ilo</span>(young)", "ilo</span> (young)")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;

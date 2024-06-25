@@ -153,6 +153,11 @@ namespace HawDict
                 .Replace("....", "&hellip;.").Replace("..", ".").Replace(".</i>.", ".</i>")
                 .Replace("&#699;s", "'s").Replace("n&#699;t", "n't").Replace("I&#699;m", "I'm")
                 .Replace("</span>.   Abbreviation for", ".</span> Abbreviation for").Replace("</span>.  Abbreviation for", ".</span> Abbreviation for").Replace("</span>. Abbreviation for", ".</span> Abbreviation for")
+                .Replace("<i>Back&tilde;().</i>", "<i>Back&tilde; (\\).</i>")
+                .Replace("&tilde;(<i>someone</i>)", "&tilde; (<i>someone</i>)")
+                .Replace("Pa&#699;i<i>(preceded by</i> ke)", "Pa&#699;i (<i>preceded by</i> ke)")
+                .Replace("iho.</i> Backslash ().", "iho.</i> Backslash (\\).")
+                .Replace("backslash</span> <i>In printing ().</i>", "backslash</span> <i>In printing (\\).</i>")
                 ;
 
             string[] split = s.Split('\n');
