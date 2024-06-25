@@ -76,6 +76,11 @@ namespace HawDict
                 .Replace("&ldquo;k&#257;nalua.rd;", "&ldquo;k&#257;nalua.&rdquo;").Replace("kona &#699;doia&#699;i&#699;o</span>", "kona &#699;oia&#699;i&#699;o</span>")
                 .Replace("&#699;s", "'s").Replace("n&#699;t", "n't").Replace("I&#699;m", "I'm").Replace("you&#699;d", "you'd").Replace("I&#699;ve", "I've").Replace("o&#699;clock", "o'clock")
                 .Replace("P.M. </span>", "P.M.</span>").Replace("O.K. </span>", "O.K.</span>").Replace(". </span>", " </span>")
+                .Replace("<span lang=\"HAW\">&#699;a&#699;nali&#699;i</span>,", "<span lang=\"HAW\">&#699;a&#699;anali&#699;i</span>,")
+                .Replace("<span lang=\"HAW\">Ko&#699;na &#699;awa</span>", "<span lang=\"HAW\">Ko&#699;ana &#699;awa</span>")
+                .Replace("<span>Cf.</span> &#699;nina, <span lang=\"HAW\">pap&#257;lina</span>, &#699;ulika, &#699;ulina.</p>", "<span>Cf.</span> nina, <span lang=\"HAW\">pap&#257;lina</span>, &#699;&#363;lika, &#699;&#363;lina.</p>")
+                .Replace("<span lang=\"HAW\">He k&#257;naenae aloha n&#699;au i&#257;&#699;oe,", "<span lang=\"HAW\">He k&#257;naenae aloha na&#699;u i&#257;&#699;oe,")
+                .Replace("PPN<span", "PPN <span")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
