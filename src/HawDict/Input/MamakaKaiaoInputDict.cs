@@ -158,6 +158,8 @@ namespace HawDict
                 .Replace("Pa&#699;i<i>(preceded by</i> ke)", "Pa&#699;i (<i>preceded by</i> ke)")
                 .Replace("iho.</i> Backslash ().", "iho.</i> Backslash (\\).")
                 .Replace("backslash</span> <i>In printing ().</i>", "backslash</span> <i>In printing (\\).</i>")
+                .Replace("&tilde; jar.</i> &#699;&#300;mole pepehi", "&tilde; jar.</i> &#699;&#332;mole pepehi")
+                .Replace("curriculum vitae, r&#233;sum&#233;</i>.Mo&#699;om&#333;&#699;ali.", "curriculum vitae, r&#233;sum&#233;</i>. Mo&#699;om&#333;&#699;ali.")
                 ;
 
             string[] split = s.Split('\n');
