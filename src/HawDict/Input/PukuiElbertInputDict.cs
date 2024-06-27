@@ -40,8 +40,7 @@ namespace HawDict
             return s
                 .Replace("</td></tr></table><p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
                 .Replace("</td></tr></table><p>&nbsp;</p>\n<p>&nbsp;</p>\n<table style=\"word-break:break-word;margin-left:auto;margin-right:auto;width:700px;\"><tr><td>", "")
-                .Replace("&amp;4 ", "Redup. ").Replace("&amp;;n", "n.").Replace("&amp;(PCP; ", "(PCP ").Replace("(Mele ", "(Mele. ")
-                .Replace("<span lang=\"HAW\">N&#257;n&#257;</span> 3", "<span>N&#257;n&#257;.</span> 3").Replace("N&#257;n&#257; 2", "N&#257;n&#257;. 2").Replace("N&#257;n&#257; 1", "N&#257;n&#257;. 1")
+                .Replace("&amp;4 ", "Redup. ").Replace("&amp;;n", "n.").Replace("&amp;(PCP; ", "(PCP ").Replace("(Mele. ", "(Mele ")
                 .Replace("..", ".").Replace(".</span>.", ".</span>").Replace(".</em>.", ".</em>")
                 .Replace("&ldquo;", "\"").Replace("&rdquo;", "\"")
                 .Replace("T.44&gt;", "")
@@ -146,6 +145,7 @@ namespace HawDict
                 .Replace(">pua&#699;ki&#699;o</span>", ">pu&#699;a ki&#699;o</span>")
                 .Replace(">pu&#699;u&#699;.pu&#699;u l&#257;.&#699;au </span>", ">pu&#699;u.pu&#699;u l&#257;.&#699;au </span>")
                 .Replace(">u&#275; (uw&#275;)&#699;ala.l&#257; </span>", ">u&#275; (uw&#275;) &#699;ala.l&#257; </span>")
+                .Replace("<span>Na_na_", "<span>N&#257;n&#257;")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
@@ -211,7 +211,7 @@ namespace HawDict
                 new OutputAbbreviation(dict, "n.v.", "noun-verb", AbbreviationType.Grammatical),
                 new OutputAbbreviation(dict, "n.", "noun", AbbreviationType.Grammatical),
                 new OutputAbbreviation(dict, "Nak.", "Nakuina, Moolelo Hawaii ..."),
-                new OutputAbbreviation(dict, "Nānā.", "Pukui, Haertig, Lee, Nānā i ke Kumu"),
+                new OutputAbbreviation(dict, "Nānā", "Pukui, Haertig, Lee, Nānā i ke Kumu"),
                 new OutputAbbreviation(dict, "Neal", "Neal, In Gardens of Hawaii, 1965"),
                 new OutputAbbreviation(dict, "num.", "numeral", AbbreviationType.Grammatical),
                 new OutputAbbreviation(dict, "par.", "particle", AbbreviationType.Grammatical),
@@ -269,7 +269,7 @@ namespace HawDict
                 new OutputAbbreviation(dict, "Mal.", "Malaki (Malachi)"),
                 new OutputAbbreviation(dict, "Mar.", "Mareko (Mark)"),
                 new OutputAbbreviation(dict, "Mat.", "Mataio (Matthew)"),
-                new OutputAbbreviation(dict, "Mele.", "Mele a Solomona (Songs of Solomon)"),
+                new OutputAbbreviation(dict, "Mele", "Mele a Solomona (Songs of Solomon)"),
                 new OutputAbbreviation(dict, "Mika", "(Micah)"),
                 new OutputAbbreviation(dict, "Nah.", "Nahelu (Numbers)"),
                 new OutputAbbreviation(dict, "Nal.", "Nalii (Kings)"),
