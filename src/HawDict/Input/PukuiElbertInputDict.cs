@@ -145,7 +145,23 @@ namespace HawDict
                 .Replace(">pua&#699;ki&#699;o</span>", ">pu&#699;a ki&#699;o</span>")
                 .Replace(">pu&#699;u&#699;.pu&#699;u l&#257;.&#699;au </span>", ">pu&#699;u.pu&#699;u l&#257;.&#699;au </span>")
                 .Replace(">u&#275; (uw&#275;)&#699;ala.l&#257; </span>", ">u&#275; (uw&#275;) &#699;ala.l&#257; </span>")
+                // Typos with _
                 .Replace("<span>Na_na_", "<span>N&#257;n&#257;")
+                .Replace(">Palaki &#699;an_ai</span>", ">Palaki &#699;&#257;nai</span>")
+                .Replace("<span lang=\"HAW\">Pal_aha", "<span lang=\"HAW\">P&#257;laha")
+                .Replace(">ka mea an_a", ">ka mea &#257;na")
+                .Replace(">keiki ho&#699;op_p&#257;</span>", ">keiki ho&#699;op&#257;p&#257;</span>")
+                .Replace(">ho&#699;o.ke._a.maka</span>", ">ho&#699;o.k&#275;.&#257;.maka</span>")
+                .Replace("_a", "&#257;")
+                .Replace(">Man_nele</span>", ">Man&#257;nele</span>")
+                .Replace("Sweet_potato", "Sweet-potato")
+                .Replace(">k&#363;_loulou</span>", ">k&#363;loulou</span>")
+                .Replace(">-makap&#363;_ </span>", ">-makap&#363; </span>")
+                .Replace(">m&#257;.nie.nie ma._hiki.hiki </span>", ">m&#257;.nie.nie m&#257;.hiki.hiki </span>")
+                .Replace(">Aia &#257; k_iko&#699;o no n&#257; w&#257;wae ma &#699;&#333; &#257; ma&#699;ane &#699;i, &#257; laila na&#699;a</span>", ">Aia &#257; k&#299;ko&#699;o n&#257; w&#257;wae ma&#699;&#333; &#257; ma&#699;ane&#699;i, &#257; laila na&#699;a</span>")
+                .Replace(">Ma kahi maika&#699;i e pa&#699;awela ana n_</span>", ">Ma kahi maika&#699;i e pa&#699;awela ana n&#333;</span>")
+                .Replace(">p_u.&#699;ulu kaua </span>", ">p&#363;.&#699;ulu kaua </span>")
+                .Replace(">K&#333; wai ka&#699;a k_el&#257;?</span>", ">K&#333; wai ka&#699;a k&#275;l&#257;?</span>")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
