@@ -2,9 +2,9 @@
 
 ## next ##
 
-* Updated MamakaKaiao parsing
-* Updated PlaceNames parsing
-* Updated PukuiElbert parsing
+* Updated MamakaKaiao parsing (93 fixed terms)
+* Updated PlaceNames parsing (54 fixed terms)
+* Updated PukuiElbert parsing (260 fixed terms)
 
 ## v0.16.0 ##
 
