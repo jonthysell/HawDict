@@ -52,6 +52,7 @@ namespace HawDict
                 .Replace("daintily(a poetic", "daintily (a poetic")
                 .Replace("Smith( 1802-1891)", "Smith (1802-1891)")
                 .Replace("McAll&#237;ster", "McAllister")
+                .Replace("See Waha-&#699;ula&#699;", "See Waha-&#699;ula")
                 ;
 
             return s;

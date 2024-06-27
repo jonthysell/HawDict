@@ -193,6 +193,8 @@ namespace HawDict
                 .Replace("as of body parts. <i>&#699;lke aku", "as of body parts. <i>&#699;Ike aku")
                 .Replace("+0", "+").Replace("4+", "+")
                 .Replace("+", " + ").Replace("=", " = ")
+                .Replace(">pala&#183;h&#275; <i>&#699;a&#699;</span></i>", ">pala&#183;h&#275;</span> <i>&#699;a&#699;</i> ")
+                .Replace(">&#699;&#257;&#183;ka&#699;a&#183;ka&#699;a <i>&#699;a&#699;</i></span>", ">&#699;&#257;&#183;ka&#699;a&#183;ka&#699;a</span> <i>&#699;a&#699;</i> ")
                 ;
 
             string[] split = s.Split('\n');
