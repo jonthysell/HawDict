@@ -159,6 +159,10 @@ namespace HawDict
                 .Replace(">lua&#699; eli wai.wai </span>", ">lua &#699;eli wai.wai </span>")
                 .Replace("<span>Cf.</span> mea ho&#699; oulu", "<span>Cf.</span> mea ho&#699;oulu")
                 .Replace("may myriadsu", "may myriads")
+                .Replace("<span lang=\"HAW\">'ala.mo&#699;o", "<span lang=\"HAW\">&#699;ala.mo&#699;o")
+                .Replace("<span lang=\"HAW\">&#699;ana.'ana.pu'u", "<span lang=\"HAW\">&#699;ana.&#699;ana.pu&#699;u")
+                .Replace("<span lang=\"HAW\">&#699;Ana&#699;anapu'u ka uila", "<span lang=\"HAW\">&#699;Ana&#699;anapu&#699;u ka uila")
+                .Replace("<span lang=\"HAW\">Ka-p&#363;,lehu", "<span lang=\"HAW\">Ka-p&#363;.lehu")
                 // Typos with _
                 .Replace("<span>Na_na_", "<span>N&#257;n&#257;")
                 .Replace(">Palaki &#699;an_ai</span>", ">Palaki &#699;&#257;nai</span>")
