@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Updated PukuiElbert parsing (3 fixed terms)
+
 ## v0.17.0 ##
 
 * Updated MamakaKaiao parsing (93 fixed terms)
