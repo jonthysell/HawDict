@@ -38,7 +38,7 @@ jobs:
       run: dotnet test ${{ env.SrcDir }}
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}.zip
@@ -65,7 +65,7 @@ jobs:
       run: dotnet test ${{ env.SrcDir }}
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}.tar.gz
@@ -92,7 +92,7 @@ jobs:
       run: dotnet test ${{ env.SrcDir }}
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}.tar.gz
