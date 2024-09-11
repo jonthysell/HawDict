@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.17.1 ##
 
 * Updated PukuiElbert parsing (3 fixed terms)
 
