@@ -34,7 +34,7 @@ namespace HawDict
                     switch (args[i].ToLower())
                     {
                         case "-f":
-                        case "--format"
+                        case "--format":
                             if (i + 1 > args.Length)
                             {
                                 throw new Exception("Missing argument.");
