@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.17.3 ##
 
 * Fixed build break
 
