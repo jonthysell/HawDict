@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.17.2 ##
 
 * Updated PukuiElbert parsing (1 fixed term)
 * Added --format arg to control output formats
