@@ -11,6 +11,16 @@ namespace HawDict
 {
     public delegate void LogLine(string format, params object[] args);
 
+    [Flags]
+    public enum OutputFormats
+    {
+        None,
+        CleanTxt,
+        StarDict,
+        Xdxf,
+        All = CleanTxt + StarDict + Xdxf,
+    }
+
     public abstract class InputDictBase
     {
         public string ID { get; private set; }
@@ -40,9 +50,9 @@ namespace HawDict
             _logLine = logLine ?? throw new ArgumentNullException(nameof(logLine));
         }
 
-        public void Process(string rootDir)
+        public void Process(string rootDir, OutputFormats outputFormats = OutputFormats.All)
         {
-            if(string.IsNullOrWhiteSpace(rootDir))
+            if (string.IsNullOrWhiteSpace(rootDir))
             {
                 throw new ArgumentNullException(nameof(rootDir));
             }
@@ -53,13 +63,29 @@ namespace HawDict
             GetRawDataFromSource();
             Log("Got {0} entries.", _rawData.Count);
 
+            if (outputFormats == OutputFormats.None)
+            {
+                Log("No formats selected to save.");
+                return;
+            }
+
             Log("Save start.");
 
-            string cleanFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.clean.txt");
-            SaveCleanFile(cleanFile);
+            if (outputFormats.HasFlag(OutputFormats.CleanTxt))
+            {
+                string cleanFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.clean.txt");
+                SaveCleanFile(cleanFile);
+            }
 
-            SaveOutputDict<XdxfDictionary>();
-            SaveOutputDict<StarDictDictionary>();
+            if (outputFormats.HasFlag(OutputFormats.StarDict))
+            {
+                SaveOutputDict<StarDictDictionary>();
+            }
+
+            if (outputFormats.HasFlag(OutputFormats.Xdxf))
+            {
+                SaveOutputDict<XdxfDictionary>();
+            }
 
             Log("Save end.");
         }

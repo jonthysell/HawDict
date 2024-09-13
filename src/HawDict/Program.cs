@@ -24,7 +24,29 @@ namespace HawDict
 
             Console.WriteLine("{0} v{1}", AppInfo.Name, AppInfo.Version);
 
-            string rootDir = (args is not null && args.Length > 0) ? args[0] : Environment.CurrentDirectory;
+            string rootDir = Environment.CurrentDirectory;
+            OutputFormats outputFormats = OutputFormats.All;
+
+            if (args is not null && args.Length > 0)
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    switch (args[i].ToLower())
+                    {
+                        case "-f":
+                        case "--format"
+                            if (i + 1 > args.Length)
+                            {
+                                throw new Exception("Missing argument.");
+                            }
+                            outputFormats = Enum.TryParse<OutputFormats>(args[++i], out var result) ? result : outputFormats;
+                            break;
+                        default:
+                            rootDir = args[i];
+                            break;
+                    }
+                }
+            }
 
             try
             {
@@ -41,7 +63,7 @@ namespace HawDict
                 {
                     try
                     {
-                        dict.Process(rootDir);
+                        dict.Process(rootDir, outputFormats);
                     }
                     catch (AggregateException ex)
                     {
