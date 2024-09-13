@@ -1,5 +1,9 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Fixed build break
+
 ## v0.17.2 ##
 
 * Updated PukuiElbert parsing (1 fixed term)
