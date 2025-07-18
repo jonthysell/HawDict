@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+
+using QuickDict;
 
 namespace HawDict
 {
@@ -15,9 +18,9 @@ namespace HawDict
     public enum OutputFormats
     {
         None,
-        CleanTxt,
-        StarDict,
-        Xdxf,
+        CleanTxt = 0x1,
+        StarDict = 0x2,
+        Xdxf = 0x4,
         All = CleanTxt + StarDict + Xdxf,
     }
 
@@ -79,12 +82,16 @@ namespace HawDict
 
             if (outputFormats.HasFlag(OutputFormats.StarDict))
             {
-                SaveOutputDict<StarDictDictionary>();
+                string starDictFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.StarDict.ifo");
+                SaveStarDictFile(starDictFile);
             }
 
             if (outputFormats.HasFlag(OutputFormats.Xdxf))
             {
-                SaveOutputDict<XdxfDictionary>();
+                string xdxfFile = Path.Combine(DictDir, $"{ID}.{TranslationType}.dict.xdxf");
+                SaveXdxfFile(xdxfFile);
+
+                Log("Building XDXF dictionary.");
             }
 
             Log("Save end.");
@@ -128,57 +135,144 @@ namespace HawDict
             Log("Saved {0} entries.", count);
         }
 
+        private DictionaryMetadata GetMetadata()
+        {
+            var metadata = new DictionaryMetadata();
+
+            metadata.ShortTitle = ShortTitle;
+            metadata.LongTitle = LongTitle;
+            metadata.Description = Description;
+            metadata.Authors.AddRange(Authors);
+            metadata.SrcUrl = SrcUrl;
+            metadata.ArticleKeyLangCode = TranslationType == TranslationType.EngToHaw ? "ENG" : "HAW";
+            metadata.ArticleValueLangCode = TranslationType == TranslationType.EngToHaw ? "HAW" : "ENG";
+            metadata.FileVersion = AppInfo.Version;
+
+            return metadata;
+        }
+
+        private void SaveStarDictFile(string starDictPath)
+        {
+            var dict = new StarDictDictionary(GetMetadata());
+
+            dict.GetStarDictSynonymsFromArticle = a =>
+            {
+                HashSet<string> synonyms = new HashSet<string>
+                    {
+                        a.Key
+                    };
+
+                foreach (string key in a.Key.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "").Replace("*", "").Replace("-", "");
+
+                    synonyms.Add(s);
+                    synonyms.Add(StringUtils.ReplaceOkina(s));
+                    synonyms.Add(StringUtils.ReplaceOkina(s, ""));
+                    synonyms.Add(StringUtils.RemoveDiacritics(s));
+                    synonyms.Add(StringUtils.ReplaceOkina(StringUtils.RemoveDiacritics(s)));
+                    synonyms.Add(StringUtils.ReplaceOkina(StringUtils.RemoveDiacritics(s), ""));
+                }
+
+                return synonyms;
+            };
+
+            dict.GetValueFromArticle = a =>
+            {
+                var valueSB = new StringBuilder();
+
+                foreach (var definition in a.Value.GetDefinitions(true))
+                {
+                    var value = definition;
+                    // Add abbreviations
+                    foreach (var abbreviation in a.Parent.Abbreviations)
+                    {
+                        value = value.WrapInTag(abbreviation.Key, "i", StringWrapInTagOptions.WrapWholeWordsOnly);
+                        if (abbreviation.Key.Length > 1 && char.IsLower(abbreviation.Key[0]))
+                        {
+                            value = value.WrapInTag(char.ToUpper(abbreviation.Key[0]) + abbreviation.Key.Substring(1), "i", StringWrapInTagOptions.WrapWholeWordsOnly);
+                        }
+                    }
+
+                    value = value.WrapInTag("p");
+
+                    // Add bold for numbering
+                    value = Regex.Replace(value, "<p>([0-9]+)\\. ", "<p><b>$1</b>. ");
+                    if (value.Contains("<b>2</b>. "))
+                    {
+                        // Fix bolding number one for pre-text
+                        value = Regex.Replace(value, "<p>(.*[^>])1\\. ", "<p>$1<b>1</b>. ");
+                    }
+
+                    valueSB.Append(value);
+                }
+
+                return valueSB.ToString();
+            };
+
+            Log("Building StarDict dictionary.");
+
+            foreach (var kvp in GetCleanEntries())
+            {
+                dict.AddArticle(kvp.Key, kvp.Value);
+            }
+
+            AddAbbreviations(dict);
+
+            Log("Saving StarDict dictionary.");
+
+            dict.Save(starDictPath);
+        }
+
+        private void SaveXdxfFile(string xdxfPath)
+        {
+            var dict = new XdxfDictionary(GetMetadata());
+
+            dict.GetXdxfKeysFromAbbreviation = a =>
+            {
+                var list = new List<string>() { a.Key };
+                if (a.Key.Length > 1 && char.IsLower(a.Key[0]))
+                {
+                    list.Add(char.ToUpper(a.Key[0]) + a.Key.Substring(1));
+                }
+                return list;
+            };
+
+            dict.GetXdxfKeysFromArticle = a =>
+            {
+                return a.Key.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
+            };
+
+            dict.GetXdxfKeyOptionalTerms = () =>
+            {
+                return new HashSet<string>() { ".", StringUtils.SyllableDotUtf8 };
+            };
+
+            dict.GetXdxfValuesFromArticle = a =>
+            {
+                return a.Value.GetDefinitions(false).ToList();
+            };
+
+            Log("Building XDXF dictionary.");
+
+            foreach (var kvp in GetCleanEntries())
+            {
+                dict.AddArticle(kvp.Key, kvp.Value);
+            }
+
+            AddAbbreviations(dict);
+
+            Log("Saving XDXF dictionary.");
+
+            dict.Save(xdxfPath);
+        }
+
         protected abstract void GetRawDataFromSource();
 
         protected abstract IEnumerable<KeyValuePair<string, string>> GetCleanEntries();
 
-        private void AddArticles(OutputDictBase dict)
-        {
-            dict.Articles.AddRange(GetCleanEntries().Select(kvp => new OutputArticle(dict, kvp.Key, kvp.Value)));
-        }
+        protected abstract void AddAbbreviations(DictionaryBase dict);
 
-        private void SaveOutputDict<T>() where T : OutputDictBase
-        {
-            OutputDictBase outputDict = GetOutputDict<T>();
-
-            Log("Building {0} dictionary.", outputDict.FormatType);
-            AddArticles(outputDict);
-
-            Log("Saving {0} dictionary.", outputDict.FormatType);
-            outputDict.Save(DictDir);
-        }
-
-        private OutputDictBase GetOutputDict<T>() where T : OutputDictBase
-        {
-            OutputDictBase dict = null;
-
-            if (typeof(T) == typeof(XdxfDictionary))
-            {
-                dict = new XdxfDictionary(ID, TranslationType)
-                {
-                    Title = ShortTitle,
-                    FullTitle = LongTitle,
-                    Description = Description,
-                    SrcUrl = SrcUrl,
-                };
-            }
-            else if (typeof(T) == typeof(StarDictDictionary))
-            {
-                dict = new StarDictDictionary(ID, TranslationType)
-                {
-                    Title = LongTitle,
-                    Description = Description,
-                };
-            }
-
-            dict.Authors.AddRange(Authors);
-
-            AddAbbreviations(dict);
-
-            return dict;
-        }
-
-        protected abstract void AddAbbreviations(OutputDictBase dict);
     }
 
     public enum TranslationType

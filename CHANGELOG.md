@@ -1,5 +1,10 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Switch to using QuickDict for StarDict and XDXF creation
+* Fixed --format filtering issue
+
 ## v0.17.3 ##
 
 * Fixed build break

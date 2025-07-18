@@ -3,7 +3,7 @@
     <Product>HawDict</Product>
     <Company>Jon Thysell</Company>
     <Authors>Jon Thysell</Authors>
-    <Copyright>Copyright © 2018-2024 Jon Thysell</Copyright>
+    <Copyright>Copyright © 2018-2025 Jon Thysell</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/jonthysell/HawDict</RepositoryUrl>
     <TargetFramework>net6.0</TargetFramework>
