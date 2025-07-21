@@ -5,7 +5,9 @@
     <AssemblyName>HawDict</AssemblyName>
     <RootNamespace>HawDict</RootNamespace>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
+    <PackageReference Include="QuickDict" Version="0.9.0" />
   </ItemGroup>
 </Project>

@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 
 using HtmlAgilityPack;
 
+using QuickDict;
+
 namespace HawDict
 {
     public class MamakaKaiaoInputDict : HtmlInputDict
@@ -251,7 +253,7 @@ namespace HawDict
         {
             string entryName = node.FirstChild.OuterHtml;
             string entryValue = node.InnerHtml.Remove(0, entryName.Length);
-            
+
             try
             {
                 return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
@@ -269,53 +271,50 @@ namespace HawDict
             return StringUtils.FixSentenceSpacing(value);
         }
 
-        protected override void AddAbbreviations(OutputDictBase dict)
+        protected override void AddAbbreviations(DictionaryBase dict)
         {
-            dict.Abbreviations.AddRange(new OutputAbbreviation[]
-            {
-                new OutputAbbreviation(dict, "abb.", "abbreviation"),
-                new OutputAbbreviation(dict, "Bib.", "Bible"),
-                new OutputAbbreviation(dict, "cf.", "compare", AbbreviationType.Auxiliary),
-                new OutputAbbreviation(dict, "comb.", "combined form"),
-                new OutputAbbreviation(dict, "dic.", "dictionary definition"),
-                new OutputAbbreviation(dict, "e.g.", "for example", AbbreviationType.Auxiliary),
-                new OutputAbbreviation(dict, "Eng.", "English"),
-                new OutputAbbreviation(dict, "ext. mng.", "extended meaning"),
-                new OutputAbbreviation(dict, "i.e.", "that is", AbbreviationType.Auxiliary),
-                new OutputAbbreviation(dict, "inv.", "invention"),
-                new OutputAbbreviation(dict, "Japn.", "Japanese"),
-                new OutputAbbreviation(dict, "lit.", "literally"),
-                new OutputAbbreviation(dict, "mān.", "mānaleo (native speaker)"),
-                new OutputAbbreviation(dict, "new mng.", "new meaning"),
-                new OutputAbbreviation(dict, "PPN", "Proto Polynesian"),
-                new OutputAbbreviation(dict, "redup.", "reduplication"),
-                new OutputAbbreviation(dict, "sh.", "shortened form"),
-                new OutputAbbreviation(dict, "sp. var.", "spelling variation"),
-                new OutputAbbreviation(dict, "Tah.", "Tahitian"),
-                new OutputAbbreviation(dict, "trad.", "traditional literary sources"),
-                new OutputAbbreviation(dict, "var.", "variation"),
-                new OutputAbbreviation(dict, "ham", "hamani (transitive verb)", AbbreviationType.Grammatical),
-                new OutputAbbreviation(dict, "heh", "hehele (intransitive verb)", AbbreviationType.Grammatical),
-                new OutputAbbreviation(dict, "ʻaʻ", "ʻaʻano (stative verb)", AbbreviationType.Grammatical),
-                new OutputAbbreviation(dict, "kik", "kikino (common noun)", AbbreviationType.Grammatical),
-                new OutputAbbreviation(dict, "iʻoa", "iʻoa (proper noun)", AbbreviationType.Grammatical),
-                new OutputAbbreviation(dict, "EK", "Elama Kanahele"),
-                new OutputAbbreviation(dict, "HA", "Henry Auwae"),
-                new OutputAbbreviation(dict, "HHLH", "Helen Haleola Lee Hong"),
-                new OutputAbbreviation(dict, "HKM", "Harry Kunihi Mitchell"),
-                new OutputAbbreviation(dict, "JPM", "Joseph Puipui Makaai"),
-                new OutputAbbreviation(dict, "KKK", "Kaui Keola Keamoai"),
-                new OutputAbbreviation(dict, "LK", "Louise Keliihoomalu"),
-                new OutputAbbreviation(dict, "MMLH", "Martha Manoanoa Lum Ho"),
-                new OutputAbbreviation(dict, "MW", "Minnie Whitford"),
-                new OutputAbbreviation(dict, "Anatomia", "Judd, Gerrit P. Anatomia"),
-                new OutputAbbreviation(dict, "Bihopa", "Bihopa, E. A. Haawina Mua o ka Hoailona Helu"),
-                new OutputAbbreviation(dict, "Bounty", "HeMoolelo no na Luina Kipi o ka Moku Bounty"),
-                new OutputAbbreviation(dict, "Legendre", "Legendre, A. M. Ke Anahonua"),
-                new OutputAbbreviation(dict, "Judd", "Judd et al. Hawaiian Language Imprints, 1822-1899"),
-                new OutputAbbreviation(dict, "Pakaa", "Nakuina, Moses K. Pakaa a me Ku-a-Pakaa"),
-                new OutputAbbreviation(dict, "Wilcox", "Wilcox, Robert"),
-        });
+            dict.AddAbbreviation("abb.", "abbreviation");
+            dict.AddAbbreviation("Bib.", "Bible");
+            dict.AddAbbreviation("cf.", "compare", AbbreviationType.Auxiliary);
+            dict.AddAbbreviation("comb.", "combined form");
+            dict.AddAbbreviation("dic.", "dictionary definition");
+            dict.AddAbbreviation("e.g.", "for example", AbbreviationType.Auxiliary);
+            dict.AddAbbreviation("Eng.", "English");
+            dict.AddAbbreviation("ext. mng.", "extended meaning");
+            dict.AddAbbreviation("i.e.", "that is", AbbreviationType.Auxiliary);
+            dict.AddAbbreviation("inv.", "invention");
+            dict.AddAbbreviation("Japn.", "Japanese");
+            dict.AddAbbreviation("lit.", "literally");
+            dict.AddAbbreviation("mān.", "mānaleo (native speaker)");
+            dict.AddAbbreviation("new mng.", "new meaning");
+            dict.AddAbbreviation("PPN", "Proto Polynesian");
+            dict.AddAbbreviation("redup.", "reduplication");
+            dict.AddAbbreviation("sh.", "shortened form");
+            dict.AddAbbreviation("sp. var.", "spelling variation");
+            dict.AddAbbreviation("Tah.", "Tahitian");
+            dict.AddAbbreviation("trad.", "traditional literary sources");
+            dict.AddAbbreviation("var.", "variation");
+            dict.AddAbbreviation("ham", "hamani (transitive verb)", AbbreviationType.Grammatical);
+            dict.AddAbbreviation("heh", "hehele (intransitive verb)", AbbreviationType.Grammatical);
+            dict.AddAbbreviation("ʻaʻ", "ʻaʻano (stative verb)", AbbreviationType.Grammatical);
+            dict.AddAbbreviation("kik", "kikino (common noun)", AbbreviationType.Grammatical);
+            dict.AddAbbreviation("iʻoa", "iʻoa (proper noun)", AbbreviationType.Grammatical);
+            dict.AddAbbreviation("EK", "Elama Kanahele");
+            dict.AddAbbreviation("HA", "Henry Auwae");
+            dict.AddAbbreviation("HHLH", "Helen Haleola Lee Hong");
+            dict.AddAbbreviation("HKM", "Harry Kunihi Mitchell");
+            dict.AddAbbreviation("JPM", "Joseph Puipui Makaai");
+            dict.AddAbbreviation("KKK", "Kaui Keola Keamoai");
+            dict.AddAbbreviation("LK", "Louise Keliihoomalu");
+            dict.AddAbbreviation("MMLH", "Martha Manoanoa Lum Ho");
+            dict.AddAbbreviation("MW", "Minnie Whitford");
+            dict.AddAbbreviation("Anatomia", "Judd, Gerrit P. Anatomia");
+            dict.AddAbbreviation("Bihopa", "Bihopa, E. A. Haawina Mua o ka Hoailona Helu");
+            dict.AddAbbreviation("Bounty", "HeMoolelo no na Luina Kipi o ka Moku Bounty");
+            dict.AddAbbreviation("Legendre", "Legendre, A. M. Ke Anahonua");
+            dict.AddAbbreviation("Judd", "Judd et al. Hawaiian Language Imprints, 1822-1899");
+            dict.AddAbbreviation("Pakaa", "Nakuina, Moses K. Pakaa a me Ku-a-Pakaa");
+            dict.AddAbbreviation("Wilcox", "Wilcox, Robert");
         }
     }
 }

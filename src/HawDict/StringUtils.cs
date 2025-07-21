@@ -141,54 +141,6 @@ namespace HawDict
         private static readonly Regex ListSplitterRegex = new Regex(@"([^\(][a-zāēīōū])([,;:])(ʻ?[a-zA-ZāēīōūĀĒĪŌŪʻ][^\)])", RegexOptions.Compiled);
         private static readonly Regex SentenceSplitterRegex = new Regex(@"([a-zāēīōū])([\.\!\?])(ʻ?[A-ZĀĒĪŌŪ])", RegexOptions.Compiled);
 
-        public static string EscapeForXml(string s)
-        {
-            if (string.IsNullOrWhiteSpace(s))
-            {
-                throw new ArgumentNullException(nameof(s));
-            }
-
-            return s
-                .Replace("&", "&amp;")
-                .Replace("<", "&lt;")
-                .Replace(">", "&gt;").Trim();
-        }
-
-        public static string WrapInTag(string s, string tag)
-        {
-            if (string.IsNullOrWhiteSpace(s))
-            {
-                throw new ArgumentNullException(nameof(s));
-            }
-
-            if (string.IsNullOrWhiteSpace(tag))
-            {
-                throw new ArgumentNullException(nameof(tag));
-            }
-
-            return $"<{tag}>{s}</{tag}>";
-        }
-
-        public static string WrapInTag(string s, string target, string tag)
-        {
-            if (string.IsNullOrWhiteSpace(s))
-            {
-                throw new ArgumentNullException(nameof(s));
-            }
-
-            if (string.IsNullOrWhiteSpace(target))
-            {
-                throw new ArgumentNullException(nameof(target));
-            }
-
-            if (string.IsNullOrWhiteSpace(tag))
-            {
-                throw new ArgumentNullException(nameof(tag));
-            }
-
-            return s.Replace(target, WrapInTag(target, tag)).Trim();
-        }
-
         public static string ReplaceOkina(string s, string replacement = "'")
         {
             if (string.IsNullOrWhiteSpace(s))

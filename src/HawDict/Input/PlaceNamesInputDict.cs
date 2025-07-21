@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 
 using HtmlAgilityPack;
 
+using QuickDict;
+
 namespace HawDict
 {
     public class PlaceNamesInputDict : HtmlInputDict
@@ -91,27 +93,24 @@ namespace HawDict
             return StringUtils.FixSentenceSpacing(value);
         }
 
-        protected override void AddAbbreviations(OutputDictBase dict)
+        protected override void AddAbbreviations(DictionaryBase dict)
         {
-            dict.Abbreviations.AddRange(new OutputAbbreviation[]
-            {
-                new OutputAbbreviation(dict, "For. Sel.", "Elbert, Selections from Fornander"),
-                new OutputAbbreviation(dict, "For.", "Fornander, Hawaiian Antiquities (e.g., For. 5:176 means Fornander, Volume 5, p. 176)"),
-                new OutputAbbreviation(dict, "HM", "Beckwith, Hawaiian Mythology"),
-                new OutputAbbreviation(dict, "Indices", "Indices of Awards..."),
-                new OutputAbbreviation(dict, "Kuy. 1", "Kuykendall, The Hawaiian Kingdom, Volume 1"),
-                new OutputAbbreviation(dict, "Kuy. 2", "Kuykendall, The Hawaiian Kingdom, Volume 2"),
-                new OutputAbbreviation(dict, "Kuy. 3", "Kuykendall, The Hawaiian Kingdom, Volume 3"),
-                new OutputAbbreviation(dict, "lit.", "literally"),
-                new OutputAbbreviation(dict, "PE", "Pukui and Elbert, Hawaiian Dictionary"),
-                new OutputAbbreviation(dict, "PH", "Emerson, Pele and Hiiaka"),
-                new OutputAbbreviation(dict, "qd.", "quadrangle"),
-                new OutputAbbreviation(dict, "qds.", "quadrangles (maps 2-4)"),
-                new OutputAbbreviation(dict, "RC", "Ruling Chiefs"),
-                new OutputAbbreviation(dict, "TM", "Taylor and Miranda, \"Honolulu Street Names\""),
-                new OutputAbbreviation(dict, "UL", "Emerson, Unwritten Literature..."),
-                new OutputAbbreviation(dict, "*", "Pronunciation and meaning uncertain"),
-        });
+            dict.AddAbbreviation("For. Sel.", "Elbert, Selections from Fornander");
+            dict.AddAbbreviation("For.", "Fornander, Hawaiian Antiquities (e.g., For. 5:176 means Fornander, Volume 5, p. 176)");
+            dict.AddAbbreviation("HM", "Beckwith, Hawaiian Mythology");
+            dict.AddAbbreviation("Indices", "Indices of Awards...");
+            dict.AddAbbreviation("Kuy. 1", "Kuykendall, The Hawaiian Kingdom, Volume 1");
+            dict.AddAbbreviation("Kuy. 2", "Kuykendall, The Hawaiian Kingdom, Volume 2");
+            dict.AddAbbreviation("Kuy. 3", "Kuykendall, The Hawaiian Kingdom, Volume 3");
+            dict.AddAbbreviation("lit.", "literally");
+            dict.AddAbbreviation("PE", "Pukui and Elbert, Hawaiian Dictionary");
+            dict.AddAbbreviation("PH", "Emerson, Pele and Hiiaka");
+            dict.AddAbbreviation("qd.", "quadrangle");
+            dict.AddAbbreviation("qds.", "quadrangles (maps 2-4)");
+            dict.AddAbbreviation("RC", "Ruling Chiefs");
+            dict.AddAbbreviation("TM", "Taylor and Miranda, \"Honolulu Street Names\"");
+            dict.AddAbbreviation("UL", "Emerson, Unwritten Literature...");
+            dict.AddAbbreviation("*", "Pronunciation and meaning uncertain");
         }
     }
 }
