@@ -162,7 +162,7 @@ namespace HawDict
                         a.Key
                     };
 
-                foreach (string key in a.Key.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (string key in a.Key.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
                 {
                     string s = key.Replace(StringUtils.SyllableDotUtf8, "").Replace(".", "").Replace("*", "").Replace("-", "");
 
@@ -240,7 +240,7 @@ namespace HawDict
 
             dict.GetXdxfKeysFromArticle = a =>
             {
-                return a.Key.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
+                return a.Key.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
             };
 
             dict.GetXdxfKeyOptionalTerms = () =>
