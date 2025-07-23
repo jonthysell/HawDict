@@ -72,7 +72,7 @@ namespace HawDict
 
             try
             {
-                return new string[] { StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryName)), StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(entryValue)) };
+                return new string[] { entryName.SingleLineNoTabs().NormalizeWhiteSpace(), entryValue.SingleLineNoTabs().NormalizeWhiteSpace() };
             }
             catch (Exception)
             {

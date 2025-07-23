@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Jon Thysell <http://jonthysell.com>
 // Licensed under the MIT License.
 
+using HtmlAgilityPack;
+using QuickDict;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
-using HtmlAgilityPack;
 
 namespace HawDict
 {
@@ -90,8 +90,8 @@ namespace HawDict
 
             foreach (string[] entry in _rawData)
             {
-                string key = StringUtils.NormalizeWhiteSpace(StringUtils.HtmlToUtf8(entry[0]));
-                string value = string.Join(" ", entry.Skip(1).Select(s => StringUtils.NormalizeWhiteSpace(StringUtils.HtmlToUtf8(s))));
+                string key = StringUtils.HtmlToUtf8(entry[0]).NormalizeWhiteSpace();
+                string value = string.Join(" ", entry.Skip(1).Select(s => StringUtils.HtmlToUtf8(s).NormalizeWhiteSpace()));
 
                 key = FinalCleanKey(key);
                 value = FinalCleanValue(value);

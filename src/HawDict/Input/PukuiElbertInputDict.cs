@@ -205,7 +205,7 @@ namespace HawDict
 
         protected override string[] ParseEntryNode(HtmlNode node)
         {
-            return node.ChildNodes.Where(c => c.Name == "span" || c.Name == "p").Select(n => StringUtils.NormalizeWhiteSpace(StringUtils.SingleLineNoTabs(n.OuterHtml))).ToArray();
+            return node.ChildNodes.Where(c => c.Name == "span" || c.Name == "p").Select(n => n.OuterHtml.SingleLineNoTabs().NormalizeWhiteSpace()).ToArray();
         }
 
         protected override string FinalCleanValue(string value)

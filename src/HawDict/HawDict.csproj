@@ -8,6 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
-    <PackageReference Include="QuickDict" Version="0.9.1" />
+    <PackageReference Include="QuickDict" Version="0.9.3" />
   </ItemGroup>
 </Project>

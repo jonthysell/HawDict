@@ -147,6 +147,7 @@ namespace HawDict
             metadata.ArticleKeyLangCode = TranslationType == TranslationType.EngToHaw ? "ENG" : "HAW";
             metadata.ArticleValueLangCode = TranslationType == TranslationType.EngToHaw ? "HAW" : "ENG";
             metadata.FileVersion = AppInfo.Version;
+            metadata.CreationDateTime =  new DateTime(2024, 9, 13); // TODO remove before release
 
             return metadata;
         }
@@ -169,9 +170,9 @@ namespace HawDict
                     synonyms.Add(s);
                     synonyms.Add(StringUtils.ReplaceOkina(s));
                     synonyms.Add(StringUtils.ReplaceOkina(s, ""));
-                    synonyms.Add(StringUtils.RemoveDiacritics(s));
-                    synonyms.Add(StringUtils.ReplaceOkina(StringUtils.RemoveDiacritics(s)));
-                    synonyms.Add(StringUtils.ReplaceOkina(StringUtils.RemoveDiacritics(s), ""));
+                    synonyms.Add(s.RemoveDiacritics());
+                    synonyms.Add(StringUtils.ReplaceOkina(s.RemoveDiacritics()));
+                    synonyms.Add(StringUtils.ReplaceOkina(s.RemoveDiacritics(), ""));
                 }
 
                 return synonyms;
