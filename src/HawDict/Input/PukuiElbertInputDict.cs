@@ -184,7 +184,7 @@ namespace HawDict
                 .Replace(">Ma kahi maika&#699;i e pa&#699;awela ana n_</span>", ">Ma kahi maika&#699;i e pa&#699;awela ana n&#333;</span>")
                 .Replace(">p_u.&#699;ulu kaua </span>", ">p&#363;.&#699;ulu kaua </span>")
                 .Replace(">K&#333; wai ka&#699;a k_el&#257;?</span>", ">K&#333; wai ka&#699;a k&#275;l&#257;?</span>")
-                .Replace("A spindly banana . . ,", "A spindly banana &hellip;,")
+                .Replace("A spindly banana . .", "A spindly banana &hellip;")
                 // Missing definition number fixes
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
