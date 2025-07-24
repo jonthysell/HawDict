@@ -2,9 +2,10 @@
 
 ## next ##
 
+* Updated to .NET 8.0
+* Updated to HtmlAgilityPack 1.12.2
 * Switch to using QuickDict for StarDict and XDXF creation
 * Fixed --format filtering issue
-* Updated to HtmlAgilityPack 1.12.2
 * Updated PlaceNames parsing (1 fixed term)
 * Updated PukuiElbert parsing (73 fixed terms)
 
