@@ -158,10 +158,10 @@ namespace HawDict
 
             dict.GetStarDictSynonymsFromArticle = a =>
             {
-                HashSet<string> synonyms = new HashSet<string>
-                    {
-                        a.Key
-                    };
+                HashSet<string> synonyms = new HashSet<string>()
+                {
+                    a.Key
+                };
 
                 foreach (string key in a.Key.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
                 {
@@ -170,9 +170,11 @@ namespace HawDict
                     synonyms.Add(s);
                     synonyms.Add(StringUtils.ReplaceOkina(s));
                     synonyms.Add(StringUtils.ReplaceOkina(s, ""));
-                    synonyms.Add(s.RemoveDiacritics());
-                    synonyms.Add(StringUtils.ReplaceOkina(s.RemoveDiacritics()));
-                    synonyms.Add(StringUtils.ReplaceOkina(s.RemoveDiacritics(), ""));
+
+                    string noDiacritics = s.RemoveDiacritics();
+                    synonyms.Add(noDiacritics);
+                    synonyms.Add(StringUtils.ReplaceOkina(noDiacritics));
+                    synonyms.Add(StringUtils.ReplaceOkina(noDiacritics, ""));
                 }
 
                 return synonyms;
