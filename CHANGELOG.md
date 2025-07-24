@@ -4,6 +4,7 @@
 
 * Switch to using QuickDict for StarDict and XDXF creation
 * Fixed --format filtering issue
+* Updated to HtmlAgilityPack 1.12.2
 
 ## v0.17.3 ##
 
