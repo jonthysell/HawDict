@@ -16,7 +16,7 @@ For help building/running HawDict and/or using the created dictionaries, please 
 
 ### Windows ###
 
-The Windows release is a self-contained x86/x64 binary which run on Windows 7 SP1+, 8.1, and 10.
+The Windows release is a self-contained x86/x64 binary which run on Windows 10 and 11.
 
 1. Download the latest Windows zip file (HawDict.Win64.zip *or* HawDict.Win32.zip) from https://github.com/jonthysell/HawDict/releases/latest
 2. Extract the zip file
@@ -25,7 +25,7 @@ The Windows release is a self-contained x86/x64 binary which run on Windows 7 SP
 
 ### MacOS ###
 
-The MacOS release is a self-contained x64 binary and runs on OSX >= 10.13.
+The MacOS release is a self-contained x64 binary and runs on OSX >= 13.
 
 1. Download the latest MacOS tar.gz file (HawDict.MacOS.tar.gz) from https://github.com/jonthysell/HawDict/releases/latest
 2. Extract the tar.gz file
