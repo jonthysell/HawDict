@@ -167,7 +167,6 @@ namespace HawDict
                 .Replace("<span lang=\"HAW\">&#699;Ana&#699;anapu'u ka uila", "<span lang=\"HAW\">&#699;Ana&#699;anapu&#699;u ka uila")
                 .Replace("<span lang=\"HAW\">Ka-p&#363;,lehu", "<span lang=\"HAW\">Ka-p&#363;.lehu")
                 .Replace("<span lang=\"HAW\">&#257;&hellip;paha", "<span lang=\"HAW\">&#257; &hellip; paha")
-                .Replace("<p><span>nvt.</span> Food or food plant", "<p><span>1.</span> <span>nvt.</span> Food or food plant")
                 // Typos with _
                 .Replace("<span>Na_na_", "<span>N&#257;n&#257;.")
                 .Replace(">Palaki &#699;an_ai</span>", ">Palaki &#699;&#257;nai</span>")
@@ -192,6 +191,8 @@ namespace HawDict
             // Fix Nānā references
             s = Regex.Replace(s, @"N&#257;n&#257;;?</span> (\d)", @"N&#257;n&#257;.</span> $1");
             s = Regex.Replace(s, @"N&#257;n&#257;;? (\d)", @"N&#257;n&#257;. $1");
+            // Fix missing 1 for first definition
+            s = Regex.Replace(s, @"<p><span>([^\d].*\n\n\s+)<p><span>2\.", @"<p><span>1.</span> <span>$1<p><span>2.");
             return s;
         }
 
