@@ -1,0 +1,72 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "BuildScriptTarget",
+            "type": "pickString",
+            "options": [
+                "All",
+                "Linux",
+                "MacOS",
+                "Unpacked",
+                "Win32",
+                "Win64"
+            ],
+            "description": "Which target to build?",
+            "default": "Unpacked"
+        }
+    ],
+    "tasks": [
+        {
+            "label": "Build",
+            "command": "pwsh",
+            "type": "shell",
+            "args": [
+                "./scripts/BuildUnpacked.ps1"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build (Custom)",
+            "command": "pwsh",
+            "type": "shell",
+            "args": [
+                "./scripts/Build${input:BuildScriptTarget}.ps1"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run Tests",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "test",
+                "./src/HawDict.sln"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ],
+}
