@@ -75,4 +75,4 @@ HawDict uses the [Html Agility Pack](https://github.com/zzzprojects/html-agility
 
 HawDict uses the [QuickDict](https://github.com/jonthysell/QuickDict) library to export to the supported dictionary formats.
 
-HawDict Copyright (c) 2018-2025 Jon Thysell
+HawDict Copyright (c) 2018-2026 Jon Thysell
