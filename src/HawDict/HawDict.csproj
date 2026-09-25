@@ -4,10 +4,12 @@
     <StartupObject>HawDict.Program</StartupObject>
     <AssemblyName>HawDict</AssemblyName>
     <RootNamespace>HawDict</RootNamespace>
+    <GitVersion>false</GitVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.12.2" />
     <PackageReference Include="QuickDict" Version="1.0.0" />
+    <PackageReference Include="GitInfo" Version="3.6.1" />
   </ItemGroup>
 </Project>

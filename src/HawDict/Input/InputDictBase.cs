@@ -147,7 +147,7 @@ namespace HawDict
             metadata.ArticleKeyLangCode = TranslationType == TranslationType.EngToHaw ? "ENG" : "HAW";
             metadata.ArticleValueLangCode = TranslationType == TranslationType.EngToHaw ? "HAW" : "ENG";
             metadata.FileVersion = AppInfo.Version;
-            metadata.CreationDateTime = new DateTime(2025, 7, 23); // TODO update before release
+            metadata.CreationDateTime = DateTime.TryParse(ThisAssembly.Git.CommitDate, out var commitDate) ? commitDate : DateTime.Now;
 
             return metadata;
         }
