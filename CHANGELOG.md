@@ -1,6 +1,6 @@
 # HawDict ChangeLog #
 
-## next ##
+## v0.18.1 ##
 
 * Updated clean text output to always use LF
 * Updated PukuiElbert parsing (23 fixed terms)
