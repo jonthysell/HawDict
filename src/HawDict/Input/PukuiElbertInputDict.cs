@@ -186,13 +186,14 @@ namespace HawDict
                 .Replace(">K&#333; wai ka&#699;a k_el&#257;?</span>", ">K&#333; wai ka&#699;a k&#275;l&#257;?</span>")
                 .Replace("A spindly banana . .", "A spindly banana &hellip;")
                 // Missing definition number fixes
+                .Replace("<p><span>1.</span> </p>", "")
                 .Replace("<p><span>n.</span> Name of a large valley on", "<p>1. <span>n.</span> Name of a large valley on")
                 ;
             // Fix Nānā references
             s = Regex.Replace(s, @"N&#257;n&#257;;?</span> (\d)", @"N&#257;n&#257;.</span> $1");
             s = Regex.Replace(s, @"N&#257;n&#257;;? (\d)", @"N&#257;n&#257;. $1");
             // Fix missing 1 for first definition
-            s = Regex.Replace(s, @"<p><span>([^\d].*\n\n\s+)<p><span>2\.", @"<p><span>1.</span> <span>$1<p><span>2.");
+            s = Regex.Replace(s, @"<p><span>([^\dbcd].*\n\n\s+)<p><span>2\.", @"<p><span>1.</span> <span>$1<p><span>2.");
             return s;
         }
 
