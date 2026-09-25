@@ -128,7 +128,7 @@ namespace HawDict
             {
                 foreach (KeyValuePair<string, string> kvp in GetCleanEntries())
                 {
-                    sw.WriteLine("{0}\t{1}", kvp.Key, kvp.Value);
+                    sw.Write("{0}\t{1}\n", kvp.Key, kvp.Value);
                     count++;
                 }
             }
