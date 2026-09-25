@@ -1,5 +1,10 @@
 # HawDict ChangeLog #
 
+## next ##
+
+* Updated clean text output to always use LF
+* Updated PukuiElbert parsing (23 fixed terms)
+
 ## v0.18.0 ##
 
 * Updated to .NET 8.0
